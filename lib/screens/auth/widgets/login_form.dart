@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:onthegrub/models/user.dart';
-import 'package:onthegrub/screens/auth/registration/widgets/remember_me.dart';
-import 'package:onthegrub/screens/auth/registration/user_registration.dart';
-import 'package:onthegrub/screens/index/index.dart';
-import 'package:onthegrub/util/authentication.dart';
+import 'package:onthegrubv2/models/user.dart';
+import 'package:onthegrubv2/util/authentication.dart';
 import 'package:provider/provider.dart';
 
 class LoginForm extends StatefulWidget {
@@ -105,7 +102,7 @@ class LoginFormState extends State<LoginForm> {
                   ),
                 ),
                 // Login button
-                RememberMe(),
+                // RememberMe(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 4.0),
                   child: Row(
@@ -117,7 +114,7 @@ class LoginFormState extends State<LoginForm> {
                           decoration: BoxDecoration(shape: BoxShape.circle),
                           child: ElevatedButton(
                             onPressed: () async {
-                              Navigator.pushNamed(context, Registration.routeName);
+                              // Navigator.pushNamed(context, Registration.routeName);
                             },
                             child: Text('REGISTER'),
                           ),
@@ -152,8 +149,8 @@ class LoginFormState extends State<LoginForm> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => IndexScreen(),
-        ),
+            // builder: (context) => IndexScreen(),
+            ),
       );
   }
 }

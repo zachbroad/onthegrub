@@ -4,6 +4,9 @@ import 'package:onthegrubv2/models/user.dart';
 import 'dart:async';
 
 import 'package:onthegrubv2/screens/auth/login.dart';
+import 'package:onthegrubv2/services/api.dart';
+import 'package:onthegrubv2/services/auth.dart';
+import 'package:onthegrubv2/util/authentication.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String routeName = '/splash_screen';
@@ -60,13 +63,13 @@ class _SplashScreenState extends State<SplashScreen> {
           await APIService.postDevice(_deviceToken, user.pk);
         }
 
-        Navigator.pushNamed(context, IndexScreen.routeName);
+        // Navigator.pushNamed(context, IndexScreen.routeName);
       } else {
         await Auth.logout();
-        Navigator.pushReplacementNamed(context, Login.routeName);
+        Navigator.pushReplacementNamed(context, LoginScreen.routeName);
       }
     } else {
-      Navigator.pushReplacementNamed(context, Login.routeName);
+      Navigator.pushReplacementNamed(context, LoginScreen.routeName);
     }
   }
 

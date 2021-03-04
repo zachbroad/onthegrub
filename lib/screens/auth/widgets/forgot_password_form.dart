@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:onthegrub/util/authentication.dart';
-import 'package:onthegrub/util/validations.dart';
+import 'package:onthegrubv2/util/authentication.dart';
+import 'package:onthegrubv2/util/validations.dart';
 
 class ForgotPasswordForm extends StatefulWidget {
   @override

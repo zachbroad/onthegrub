@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onthegrubv2/models/user.dart';
+import 'package:onthegrubv2/screens/auth/forgot_password.dart';
 import 'package:provider/provider.dart';
 
 import 'widgets/login_form.dart';
@@ -14,8 +15,8 @@ class LoginScreen extends StatefulWidget {
 class LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
-    User user = Provider.of<User>(context, listen: false);
-    if (user == null) user = User();
+    // User user = Provider.of<User>(context, listen: false);
+    // if (user == null) user = User();
     super.initState();
   }
 
