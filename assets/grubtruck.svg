@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 709.39 564.56">
+    <g style="isolation:isolate">
+        <g id="Layer_2" data-name="Layer 2">
+            <g id="Layer_1-2" data-name="Layer 1">
+                <ellipse cx="365.46" cy="543.82" rx="332.8" ry="20.74" opacity="0.3" style="mix-blend-mode:multiply" />
+                <path
+                    d="M706.27,337.78V462.12a22.2,22.2,0,0,1-22.2,22.19H27.53A22.19,22.19,0,0,1,5.34,462.12V180.75H600.86l.34.9,14.68,39,29.38,78,4.28,1.69,42.65,16.75A22.19,22.19,0,0,1,706.27,337.78Z"
+                    fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.22" />
+                <rect x="101.98" y="99.56" width="377.72" height="43.23" stroke-width="6.22" stroke="#000" stroke-linecap="round"
+                    stroke-linejoin="round" fill="#dfd1c5" />
+                <rect x="101.98" y="99.56" width="377.72" height="21.1" opacity="0.3" style="mix-blend-mode:multiply" />
+                <path
+                    d="M680.5,181.32H5.33V155.55a22.2,22.2,0,0,1,22.2-22.2H684.08a22.19,22.19,0,0,1,22.19,22.2h0a25.76,25.76,0,0,1-25.77,25.77Z"
+                    fill="#865743" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.22" />
+                <path
+                    d="M572.88,109.22H21.41A18.29,18.29,0,0,1,3.11,90.93V21.41a18.3,18.3,0,0,1,18.3-18.3H572.88a18.3,18.3,0,0,1,18.3,18.3V90.93A18.3,18.3,0,0,1,572.88,109.22Z"
+                    fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.22" />
+                <path
+                    d="M3.11,56.17H591.18a0,0,0,0,1,0,0V95A14.21,14.21,0,0,1,577,109.22H17.32A14.21,14.21,0,0,1,3.11,95V56.17A0,0,0,0,1,3.11,56.17Z"
+                    opacity="0.1" style="mix-blend-mode:multiply" />
+                <text transform="translate(25.66 80.53)" font-size="71.32" font-family="Montserrat-Bold, Montserrat" font-weight="700"
+                    letter-spacing="0.05em">GRU
+                    <tspan x="174.31" y="0" letter-spacing="0.04em">B</tspan>
+                    <tspan x="231.72" y="0">TRUC</tspan>
+                    <tspan x="450.96" y="0" letter-spacing="0.03em">K</tspan>
+                    <tspan x="506.24" y="0" letter-spacing="0.05em">S</tspan>
+                </text>
+                <rect x="54.88" y="181.64" width="94.27" height="139.61" stroke-width="6.22" stroke="#000" stroke-linecap="round"
+                    stroke-linejoin="round" fill="#dfd1c5" />
+                <rect x="54.88" y="181.64" width="18.08" height="139.61" opacity="0.3" style="mix-blend-mode:multiply" />
+                <rect x="193.9" y="181.64" width="164.07" height="118.73" stroke-width="6.22" stroke="#000" stroke-linecap="round"
+                    stroke-linejoin="round" fill="#dfd1c5" />
+                <rect x="193.9" y="181.64" width="28.87" height="118.73" opacity="0.3" style="mix-blend-mode:multiply" />
+                <polygon
+                    points="649.54 300.37 567.4 300.37 567.4 181.65 601.2 181.65 605.53 193.14 613.9 215.38 620.56 233.08 628.93 255.33 645.26 298.68 649.54 300.37"
+                    fill="#dfd1c5" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.22" />
+                <rect x="404.5" y="181.65" width="116.34" height="301.89" stroke-width="6.22" stroke="#000" stroke-linecap="round"
+                    stroke-linejoin="round" fill="#dfd1c5" />
+                <polyline points="458.06 365.8 458.06 483.54 404.5 483.54 404.5 181.65 458.06 181.65 458.06 365.8" opacity="0.1"
+                    style="mix-blend-mode:multiply" />
+                <circle cx="137.05" cy="485.25" r="62.78" fill="#865743" stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="6.22" />
+                <circle cx="594.94" cy="485.25" r="62.78" fill="#865743" stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="6.22" />
+                <circle cx="137.05" cy="485.25" r="30.81" fill="#dfd1c5" stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="6.22" />
+                <path
+                    d="M706.27,444.86v17.26a22.2,22.2,0,0,1-22.2,22.19H27.53A22.19,22.19,0,0,1,5.34,462.12V444.86H60.92a87.54,87.54,0,0,1,155.34,0h301a87.54,87.54,0,0,1,155.34,0Z"
+                    opacity="0.2" style="mix-blend-mode:multiply" />
+                <circle cx="594.94" cy="485.25" r="30.81" fill="#dfd1c5" stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="6.22" />
+                <path d="M706.27,366.18v51.76H686a25.88,25.88,0,1,1,0-51.76Z" fill="#ffe766" stroke="#000" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="6.22" />
+                <path
+                    d="M690.34,156.44H354a5.12,5.12,0,0,1-5.12-5.12h0A5.12,5.12,0,0,1,354,146.2H690.34a5.12,5.12,0,0,1,5.12,5.12h0A5.12,5.12,0,0,1,690.34,156.44Z"
+                    fill="#c68d79" />
+                <polygon points="615.88 220.66 5.34 220.66 5.34 180.75 600.87 180.75 601.2 181.65 615.88 220.66" opacity="0.3"
+                    style="mix-blend-mode:multiply" />
+                <polygon points="613.9 215.38 567.4 261.88 567.4 231.25 605.53 193.14 613.9 215.38" fill="#fff" opacity="0.4" />
+                <polygon points="628.93 255.33 583.89 300.37 570.74 300.37 567.4 297.04 567.4 286.24 620.56 233.08 628.93 255.33"
+                    fill="#fff" opacity="0.4" />
+                <polygon
+                    points="649.54 300.37 567.4 300.37 567.4 181.65 601.2 181.65 605.53 193.14 613.9 215.38 620.56 233.08 628.93 255.33 645.26 298.68 649.54 300.37"
+                    fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.22" />
+            </g>
+        </g>
+    </g>
+</svg>
