@@ -17,7 +17,7 @@ class TrucksLoading extends TrucksState {
 class TrucksFetchError extends TrucksState {
   final String error;
 
-  TrucksFetchError(this.error);
+  TrucksFetchError({this.error});
 
   @override
   List<Object> get props => [error];
@@ -26,7 +26,7 @@ class TrucksFetchError extends TrucksState {
 class TrucksFetched extends TrucksState {
   final List<Truck> trucks;
 
-  TrucksFetched(this.trucks);
+  TrucksFetched({this.trucks});
 
   @override
   List<Object> get props => [trucks];

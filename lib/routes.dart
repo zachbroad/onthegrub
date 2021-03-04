@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:onthegrubv2/screens/auth/forgot_password.dart';
 import 'package:onthegrubv2/screens/auth/login.dart';
 import 'package:onthegrubv2/screens/splash.dart';
+import 'package:onthegrubv2/screens/trucks.dart';
 
 class Routes {
   static Map<String, WidgetBuilder> all() {
@@ -17,6 +18,7 @@ class Routes {
       ForgotPassword.routeName: (BuildContext context) => ForgotPassword(),
       LoginScreen.routeName: (BuildContext context) => LoginScreen(),
       SplashScreen.routeName: (BuildContext context) => SplashScreen(),
+      TrucksList.routeName: (BuildContext context) => TrucksList(),
 
       // NOTIFICATIONS
 

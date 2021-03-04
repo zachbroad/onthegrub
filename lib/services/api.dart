@@ -18,6 +18,8 @@ class APIService {
       "Content-Type": "application/json",
     };
 
+    print(url);
+
     final String token = await fss.FlutterSecureStorage().read(key: 'jwt');
     if (token != null) {
       headers["Authorization"] = "Token $token";
@@ -25,7 +27,7 @@ class APIService {
     try {
       final response = await http.get(Uri.parse(url), headers: headers);
       print(response.statusCode);
-      if (response.statusCode == 200) {
+      if (response.statusCode < 300) {
         return json.decode(response.body);
       } else {
         print(response.statusCode);

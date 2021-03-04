@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onthegrubv2/blocs/trucks_cubit.dart';
 
 class TrucksList extends StatefulWidget {
+  static String routeName = "/trucks/";
+
   @override
   State<StatefulWidget> createState() {
     return _TrucksListState();
@@ -35,10 +37,10 @@ class _TrucksListState extends State<TrucksList> {
               return Container(child: Text("Trucks List"));
             }
             if (state is TrucksFetchError) {
-              return Container(child: Text("Error: " + state.error));
+              return Container(child: Text("Error:  + $state.error"));
             }
 
-            return Text("??? - ${state}");
+            return Text("??? - $state");
           },
         ),
       ),

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:onthegrubv2/models/user.dart';
 import 'package:onthegrubv2/routes.dart';
 import 'package:onthegrubv2/screens/auth/login.dart';
+import 'package:onthegrubv2/screens/trucks.dart';
 import 'package:onthegrubv2/themes/state_notifier.dart';
 import 'package:onthegrubv2/themes/theme.dart';
 import 'package:provider/provider.dart';
@@ -38,7 +39,7 @@ void main() async {
               darkTheme: AppTheme.darkTheme,
               themeMode: appState.isDarkMode ? ThemeMode.dark : ThemeMode.light,
               routes: Routes.all(),
-              initialRoute: LoginScreen.routeName,
+              initialRoute: TrucksList.routeName,
             );
           },
         );
