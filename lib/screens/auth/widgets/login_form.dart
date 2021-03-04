@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onthegrubv2/models/user.dart';
+import 'package:onthegrubv2/screens/index/index_screen.dart';
 import 'package:onthegrubv2/util/authentication.dart';
 import 'package:provider/provider.dart';
 
@@ -149,8 +150,8 @@ class LoginFormState extends State<LoginForm> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-            // builder: (context) => IndexScreen(),
-            ),
+          builder: (context) => IndexScreen(),
+        ),
       );
   }
 }
