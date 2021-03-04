@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:onthegrubv2/routes.dart';
 import 'file:///C:/Users/zachb/Desktop/onthegrubv2/lib/screens/auth/login.dart';
+import 'package:onthegrubv2/screens/trucks.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.green,
       ),
-      home: LoginScreen(),
+      home: TrucksList(),
     );
   }
 }
