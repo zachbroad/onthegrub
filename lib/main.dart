@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onthegrubv2/routes.dart';
+import 'package:onthegrubv2/screens/login.dart';
 import 'package:onthegrubv2/screens/splash.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.green,
       ),
-      home: SplashScreen(),
+      home: LoginScreen(),
     );
   }
 }
