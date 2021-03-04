@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:onthegrubv2/widgets/login_text_from.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -15,10 +16,10 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Column(
         children: [
           Container(
-            child: Text("Login Box"),
+            child: LoginTextForm(),
           ),
           Container(
-            child: Text("Login box"),
+            child: LoginTextForm(),
           ),
         ],
       ),
