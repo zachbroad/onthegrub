@@ -15,8 +15,8 @@ class LoginScreen extends StatefulWidget {
 class LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
-    // User user = Provider.of<User>(context, listen: false);
-    // if (user == null) user = User();
+    User user = Provider.of<User>(context, listen: false);
+    if (user == null) user = User();
     super.initState();
   }
 
