@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onthegrubv2/routes.dart';
-import 'package:onthegrubv2/screens/login.dart';
+import 'file:///C:/Users/zachb/Desktop/onthegrubv2/lib/screens/auth/login.dart';
 
 void main() {
   runApp(MyApp());
