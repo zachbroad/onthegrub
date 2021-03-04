@@ -39,7 +39,7 @@ void main() async {
               darkTheme: AppTheme.darkTheme,
               themeMode: appState.isDarkMode ? ThemeMode.dark : ThemeMode.light,
               routes: Routes.all(),
-              initialRoute: TrucksList.routeName,
+              initialRoute: LoginScreen.routeName,
             );
           },
         );

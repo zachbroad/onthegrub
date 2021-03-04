@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onthegrubv2/models/user.dart';
-import 'package:onthegrubv2/screens/index/index_screen.dart';
+import 'package:onthegrubv2/screens/index/index.dart';
 import 'package:onthegrubv2/util/authentication.dart';
 import 'package:provider/provider.dart';
 
