@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onthegrubv2/routes.dart';
 import 'package:onthegrubv2/screens/login.dart';
-import 'package:onthegrubv2/screens/splash.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // routes: Routes.all(),
       title: 'OnTheGrub',
       theme: ThemeData(
         // is not restarted.

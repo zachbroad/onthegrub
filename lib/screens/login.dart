@@ -13,7 +13,14 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: [],
+        children: [
+          Container(
+            child: Text("Login Box"),
+          ),
+          Container(
+            child: Text("Login box"),
+          ),
+        ],
       ),
     );
   }
