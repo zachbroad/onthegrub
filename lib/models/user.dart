@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:onthegrubv2/models/favorite.dart';
 import 'package:onthegrubv2/models/truck.dart';
-import 'package:onthegrubv2/models/favorite.dart';
 
 class User extends ChangeNotifier {
   int pk;
