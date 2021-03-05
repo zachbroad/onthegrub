@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:onthegrubv2/models/user.dart';
 import 'package:onthegrubv2/screens/index/events.dart';
+import 'package:onthegrubv2/screens/index/home.dart';
+import 'package:onthegrubv2/screens/index/map.dart';
 import 'package:onthegrubv2/screens/trucks.dart';
 import 'package:provider/provider.dart';
 
@@ -42,8 +44,6 @@ class IndexScreenState extends State<IndexScreen> {
     super.initState();
   }
 
-  GlobalKey _drawerKey = GlobalKey();
-
   @override
   Widget build(BuildContext context) {
     return Consumer<User>(builder: (context, user, child) {
@@ -68,15 +68,10 @@ class IndexScreenState extends State<IndexScreen> {
             ); //
           },
           items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.map),
-            ),
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+            BottomNavigationBarItem(icon: Icon(Icons.search), label: "Trucks List"),
+            BottomNavigationBarItem(icon: Icon(Icons.event), label: "Events List"),
+            BottomNavigationBarItem(icon: Icon(Icons.map), label: "Map"),
           ],
         ),
       );

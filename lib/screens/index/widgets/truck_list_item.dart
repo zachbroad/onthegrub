@@ -1,13 +1,7 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:onthegrub/blocs/location_bloc.dart';
-import 'package:onthegrub/models/truck.dart';
-import 'package:onthegrub/models/user.dart';
-import 'package:onthegrub/screens/truck/truck_profile.dart';
 import 'package:provider/provider.dart';
-
-import '../../widgets/distance_text_overlay.dart';
 
 class TruckListItem extends StatefulWidget {
   final Truck truck;

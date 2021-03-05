@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:onthegrubv2/models/user.dart';
 import 'package:onthegrubv2/routes.dart';
 import 'package:onthegrubv2/screens/auth/login.dart';
-import 'package:onthegrubv2/screens/trucks.dart';
 import 'package:onthegrubv2/themes/state_notifier.dart';
 import 'package:onthegrubv2/themes/theme.dart';
 import 'package:provider/provider.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:onthegrub/screens/dashboard/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class WelcomeWidget extends StatefulWidget {
