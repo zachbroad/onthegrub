@@ -1,6 +1,8 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:onthegrubv2/models/truck.dart';
+import 'package:onthegrubv2/models/user.dart';
 import 'package:provider/provider.dart';
 
 class TruckListItem extends StatefulWidget {
@@ -17,12 +19,12 @@ class _TruckListItemState extends State<TruckListItem> {
   @override
   Widget build(BuildContext context) {
     bool _isFavorited = widget.user.hasFavorited(widget.truck.pk);
-    LocationBloc listenLocationBloc = Provider.of<LocationBloc>(context);
+//    LocationBloc listenLocationBloc = Provider.of<LocationBloc>(context);
 
     return GestureDetector(
       key: Key(widget.truck.title),
       onTap: () {
-        Navigator.pushNamed(context, TruckProfile.routeName, arguments: widget.truck);
+//        Navigator.pushNamed(context, TruckProfile.routeName, arguments: widget.truck);
       },
       child: Card(
         margin: EdgeInsets.zero,
@@ -48,7 +50,7 @@ class _TruckListItemState extends State<TruckListItem> {
                   icon: Icon(!widget.user.hasFavorited(widget.truck.pk) ? Icons.favorite_border : Icons.favorite,
                       color: Colors.redAccent, size: 48),
                   onPressed: () async {
-                    await toggleFavorite(_isFavorited);
+//                    await toggleFavorite(_isFavorited);
                   },
                 ),
               ),
@@ -67,19 +69,19 @@ class _TruckListItemState extends State<TruckListItem> {
                   ],
                 ),
               ),
-              if (widget.truck.hasLocation && listenLocationBloc.isListening)
+              /*if (widget.truck.hasLocation && listenLocationBloc.isListening)
                 Positioned(
                   bottom: 4,
                   right: 4,
                   child: TruckDistanceText(truck: widget.truck),
-                ),
+                ),*/
             ],
           ),
         ),
       ),
     );
   }
-
+/*
   Future toggleFavorite(bool _isFavorited) async {
     if (_isFavorited) {
       bool unfav = await widget.user.unfavorite(widget.truck);
@@ -92,5 +94,5 @@ class _TruckListItemState extends State<TruckListItem> {
         _isFavorited = fav;
       });
     }
-  }
+  }*/
 }

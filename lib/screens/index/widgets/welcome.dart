@@ -156,7 +156,7 @@ class _WelcomeWidgetState extends State<WelcomeWidget> with TickerProviderStateM
                               ),
                               TextButton(
                                 onPressed: () {
-                                  Navigator.pushNamed(context, DashboardIndex.routeName);
+//                                  Navigator.pushNamed(context, DashboardIndex.routeName);
                                 },
                                 child: Text("More info"),
                               ),

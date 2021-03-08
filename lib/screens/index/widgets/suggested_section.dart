@@ -77,13 +77,13 @@ class SuggestedSectionRow extends StatelessWidget {
             return Row(
               children: [
                 SizedBox(width: 8.0),
-                Container(
+                /*Container(
 //                  height: MediaQuery.of(context).size.height * .3,
                   child: TruckCard(
                     truck: truck,
                     padding: EdgeInsets.only(left: 8.0),
                   ),
-                ),
+                ),*/
               ],
             );
           })

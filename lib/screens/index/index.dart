@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onthegrubv2/models/user.dart';
+import 'package:onthegrubv2/screens/index/account.dart';
 import 'package:onthegrubv2/screens/index/events.dart';
 import 'package:onthegrubv2/screens/index/home.dart';
 import 'package:onthegrubv2/screens/index/map.dart';
@@ -33,6 +34,7 @@ class IndexScreenState extends State<IndexScreen> {
     TrucksList(),
     EventsScreen(),
     MapScreen(),
+    AccountScreen(),
   ];
 
   @override
@@ -69,9 +71,13 @@ class IndexScreenState extends State<IndexScreen> {
           },
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-            BottomNavigationBarItem(icon: Icon(Icons.search), label: "Trucks List"),
-            BottomNavigationBarItem(icon: Icon(Icons.event), label: "Events List"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.search), label: "Trucks List"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.event), label: "Events List"),
             BottomNavigationBarItem(icon: Icon(Icons.map), label: "Map"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.account_circle), label: "Account"),
           ],
         ),
       );
