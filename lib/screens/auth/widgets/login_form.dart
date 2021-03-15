@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:onthegrubv2/models/user.dart';
+import 'package:onthegrubv2/screens/auth/registration/user_registration.dart';
 import 'package:onthegrubv2/screens/index/index.dart';
 import 'package:onthegrubv2/util/authentication.dart';
 import 'package:provider/provider.dart';
+
+// TODO: refactor LoginForm to LoginWidget that contains LoginForm with actual
+//  forms
 
 class LoginForm extends StatefulWidget {
   @override
@@ -36,13 +40,15 @@ class LoginFormState extends State<LoginForm> {
         return Form(
           autovalidateMode: AutovalidateMode.disabled,
           key: _formKey,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: SizedBox(
+            width: 300,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 // Username field
-                Container(
+                SizedBox(
+                  height: 50,
+                  width: 300,
                   child: TextFormField(
                     focusNode: usernameFocus,
                     style: TextStyle(color: Colors.black87),
@@ -72,7 +78,9 @@ class LoginFormState extends State<LoginForm> {
                 ),
                 SizedBox(height: 8.0),
                 // Password field
-                Container(
+                SizedBox(
+                  height: 50,
+                  width: 300,
                   child: TextFormField(
                     focusNode: passwordFocus,
                     style: TextStyle(color: Colors.black87),
@@ -113,11 +121,14 @@ class LoginFormState extends State<LoginForm> {
                         flex: 1,
                         child: Container(
                           decoration: BoxDecoration(shape: BoxShape.circle),
-                          child: ElevatedButton(
+                          child: TextButton(
                             onPressed: () async {
-                              // Navigator.pushNamed(context, Registration.routeName);
+                              Navigator.pushNamed(context, Registration.routeName);
                             },
-                            child: Text('REGISTER'),
+                            child: Text(
+                              'Register',
+                              style: Theme.of(context).textTheme.subtitle1,
+                            ),
                           ),
                         ),
                       ),
@@ -126,11 +137,14 @@ class LoginFormState extends State<LoginForm> {
                         flex: 1,
                         child: Container(
                           decoration: BoxDecoration(shape: BoxShape.circle),
-                          child: ElevatedButton(
+                          child: TextButton(
                             onPressed: () async {
                               login();
                             },
-                            child: Text('LOGIN'),
+                            child: Text(
+                              'Login',
+                              style: Theme.of(context).textTheme.subtitle1,
+                            ),
                           ),
                         ),
                       ),

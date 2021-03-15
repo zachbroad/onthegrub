@@ -49,8 +49,6 @@ class AuthService {
     return ret;
   }
 
-  // TODO: Verify JWT; on successful verification, return user data
-
   static Future<User> getUserProfile(token, context) async {
     var profile;
     try {
@@ -68,7 +66,6 @@ class AuthService {
     }
   }
 
-  // Validate JWT
   static Future<bool> verifyToken(String token) async {
     try {
       final response = await http

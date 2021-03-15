@@ -42,11 +42,11 @@ class ForgotPasswordFormState extends State<ForgotPasswordForm> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                 ),
-                child: ElevatedButton(
+                child: TextButton(
                   onPressed: () async {
                     Auth.resetPassword(buildContext: context, email: _emailController.text, formKeyValid: _formKey.currentState.validate());
                   },
-                  child: Text('Reset Password', style: TextStyle(color: Colors.white70)),
+                  child: Text('Reset Password'),
                 ),
               ),
             ),

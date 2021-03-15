@@ -1,11 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:http/http.dart' as http;
 import 'package:onthegrubv2/models/truck.dart';
-import "dart:convert";
-
 import 'package:onthegrubv2/services/api.dart';
-
 part 'trucks_state.dart';
 
 class TrucksCubit extends Cubit<TrucksState> {

@@ -25,7 +25,6 @@ class LoginScreenState extends State<LoginScreen> {
     var theme = Theme.of(context);
 
     return Consumer<User>(builder: (context, user, child) {
-      Color textColor = Theme.of(context).brightness == Brightness.dark ? Colors.white.withOpacity(.9) : Colors.black.withOpacity(.9);
       Color loginCardColor = Theme.of(context).brightness == Brightness.dark ? Colors.black.withOpacity(.3) : Colors.white.withOpacity(.3);
 
       return Container(
@@ -44,20 +43,28 @@ class LoginScreenState extends State<LoginScreen> {
             body: SafeArea(
               child: Container(
                   child: ListView(
+                physics: NeverScrollableScrollPhysics(),
                 children: [
-                  Card(
-                    color: loginCardColor,
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: 36, horizontal: 36),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         SizedBox(height: 8.0),
+
                         Image.asset("assets/grubtruck.png", width: 96, height: 96),
-                        Text("OnTheGrub", style: theme.textTheme.headline2.copyWith(color: textColor)),
+                        Text(
+                          "OnTheGrub",
+                          style: theme.textTheme.headline4,
+                        ),
+                        SizedBox(height: 8.0),
+
                         LoginForm(),
                         SizedBox(height: 16.0),
+
                         Center(
                           child: GestureDetector(
-                            child: Text('Forgot password?', style: TextStyle(color: textColor)),
+                            child: Text('Forgot password?'),
                             onTap: () => Navigator.pushNamed(context, ForgotPassword.routeName),
                           ),
                         ),
