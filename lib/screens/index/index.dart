@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:onthegrubv2/models/user.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:onthegrubv2/blocs/location_cubit.dart';
+import 'package:onthegrubv2/data/models/user.dart';
 import 'package:onthegrubv2/screens/index/account.dart';
 import 'package:onthegrubv2/screens/index/events.dart';
 import 'package:onthegrubv2/screens/index/home.dart';
@@ -52,6 +54,7 @@ class IndexScreenState extends State<IndexScreen> {
       if (user == null) {
         return Container(width: 0, height: 0);
       }
+      BlocProvider.of<LocationCubit>(context).requestPermission();
       return Scaffold(
         body: IndexedStack(
           index: _selectedPage,
@@ -71,13 +74,10 @@ class IndexScreenState extends State<IndexScreen> {
           },
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.search), label: "Trucks List"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.event), label: "Events List"),
+            BottomNavigationBarItem(icon: Icon(Icons.search), label: "Trucks List"),
+            BottomNavigationBarItem(icon: Icon(Icons.event), label: "Events List"),
             BottomNavigationBarItem(icon: Icon(Icons.map), label: "Map"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.account_circle), label: "Account"),
+            BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: "Account"),
           ],
         ),
       );

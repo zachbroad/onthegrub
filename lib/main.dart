@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:onthegrubv2/models/user.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:location/location.dart';
+import 'package:onthegrubv2/blocs/location_cubit.dart';
+import 'package:onthegrubv2/data/models/user.dart';
 import 'package:onthegrubv2/routes.dart';
 import 'package:onthegrubv2/screens/auth/login.dart';
+import 'package:onthegrubv2/screens/auth/splash_screen.dart';
 import 'package:onthegrubv2/themes/state_notifier.dart';
 import 'package:onthegrubv2/themes/theme.dart';
 import 'package:provider/provider.dart';
@@ -23,9 +27,9 @@ void main() async {
       ChangeNotifierProvider<User>(
         create: (_) => User(),
       ),
-      // ChangeNotifierProvider<LocationCubit>(
-      //   create: (_) => LocationCubit(),
-      // ),
+      BlocProvider(
+        create: (_) => LocationCubit(Location()),
+      ),
     ],
     child: Consumer<AppStateNotifier>(
       builder: (context, appState, child) {
@@ -38,7 +42,7 @@ void main() async {
               darkTheme: AppTheme.darkTheme,
               themeMode: appState.isDarkMode ? ThemeMode.dark : ThemeMode.light,
               routes: Routes.all(),
-              initialRoute: LoginScreen.routeName,
+              initialRoute: SplashScreen.routeName,
             );
           },
         );

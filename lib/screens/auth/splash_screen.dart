@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:onthegrubv2/models/user.dart';
+import 'package:onthegrubv2/data/models/user.dart';
 import 'dart:async';
 
 import 'package:onthegrubv2/screens/auth/login.dart';
+import 'package:onthegrubv2/screens/index/index.dart';
 import 'package:onthegrubv2/services/api.dart';
 import 'package:onthegrubv2/services/auth.dart';
 import 'package:onthegrubv2/util/authentication.dart';
@@ -47,6 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
   navigateUser() async {
     FlutterSecureStorage fss = FlutterSecureStorage();
     String token = await fss.read(key: 'jwt');
+    print(token);
 
     if (token == null) {
       Navigator.pushReplacementNamed(context, LoginScreen.routeName);
@@ -57,13 +59,14 @@ class _SplashScreenState extends State<SplashScreen> {
       bool authenticated = await AuthService.verifyToken(token);
       if (authenticated) {
         User user = await AuthService.getUserProfile(token, context);
+        // TODO: device registration (needed for Firebase Notifications)
         // Verify if there is a duplciate device token
         //    if there is, ignore posting device
-        if (!await verifyDuplicateToken(_deviceToken)) {
-          await APIService.postDevice(_deviceToken, user.pk);
-        }
+        // if (!await verifyDuplicateToken(_deviceToken)) {
+        //   await APIService.postDevice(_deviceToken, user.pk);
+        // }
 
-        // Navigator.pushNamed(context, IndexScreen.routeName);
+        Navigator.pushNamed(context, IndexScreen.routeName);
       } else {
         await Auth.logout();
         Navigator.pushReplacementNamed(context, LoginScreen.routeName);

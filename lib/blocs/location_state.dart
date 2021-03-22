@@ -14,20 +14,34 @@ class LocationLoading extends LocationState {
   List<Object> get props => [];
 }
 
-class LocationFetchError extends LocationState {
+class LocationPermissionLoading extends LocationState {
+  @override
+  List<Object> get props => [];
+}
+
+class LocationPermission extends LocationState {
+  final PermissionStatus status;
+
+  LocationPermission(this.status);
+
+  @override
+  List<Object> get props => [status];
+}
+
+class LocationError extends LocationState {
   final String error;
 
-  LocationFetchError({this.error});
+  LocationError(this.error);
 
   @override
   List<Object> get props => [error];
 }
 
 class LocationFetched extends LocationState {
-  final List<int> location;
+  final LocationData locationData;
 
-  LocationFetched({this.location});
+  LocationFetched(this.locationData);
 
   @override
-  List<Object> get props => [location];
+  List<Object> get props => [locationData];
 }

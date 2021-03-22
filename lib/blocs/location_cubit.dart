@@ -1,11 +1,35 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:onthegrubv2/models/truck.dart';
-import 'package:onthegrubv2/services/api.dart';
+import 'package:location/location.dart';
 part 'location_state.dart';
 
 class LocationCubit extends Cubit<LocationState> {
-  LocationCubit() : super(LocationInitial());
+  final Location _location;
+  LocationCubit(this._location) : super(LocationInitial());
+
+  Future<void> requestPermission() async {
+    try {
+      emit(LocationPermissionLoading());
+      final status = await _location.requestPermission();
+      emit(LocationPermission(status));
+    } catch (e) {
+      emit(LocationError(e.toString()));
+      print(e.toString());
+    }
+  }
+
+  Future<void> getLocation() async {
+    try {
+      emit(LocationLoading());
+      final location = await _location.getLocation();
+      emit(LocationFetched(location));
+    } catch (e) {
+      emit(LocationError("User has not given permission to recieve location."));
+      print(e.toString());
+    }
+  }
+
+  Location get location => _location;
 
 // Initial:
 //  checkPerms();

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onthegrubv2/blocs/trucks_cubit.dart';
-import 'package:onthegrubv2/models/truck.dart';
+import 'package:onthegrubv2/data/models/truck.dart';
 
 class TrucksList extends StatefulWidget {
   static String routeName = "/trucks/";

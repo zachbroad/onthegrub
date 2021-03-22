@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:onthegrubv2/models/user_registration.dart';
+import 'package:onthegrubv2/data/models/user_registration.dart';
 import 'package:onthegrubv2/screens/auth/registration/widgets/last_page_button.dart';
 import 'package:onthegrubv2/services/auth.dart';
 import 'package:onthegrubv2/util/validations.dart';

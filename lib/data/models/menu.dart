@@ -1,4 +1,4 @@
-import 'package:onthegrubv2/models/menu_item.dart';
+import 'package:onthegrubv2/data/models/menu_item.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'menu.g.dart';

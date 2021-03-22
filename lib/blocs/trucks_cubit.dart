@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:onthegrubv2/models/truck.dart';
+import 'package:onthegrubv2/data/models/truck.dart';
 import 'package:onthegrubv2/services/api.dart';
 part 'trucks_state.dart';
 

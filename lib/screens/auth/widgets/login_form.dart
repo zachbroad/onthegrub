@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onthegrubv2/models/user.dart';
+import 'package:onthegrubv2/data/models/user.dart';
 import 'package:onthegrubv2/screens/auth/registration/user_registration.dart';
 import 'package:onthegrubv2/screens/index/index.dart';
 import 'package:onthegrubv2/util/authentication.dart';
@@ -161,11 +161,6 @@ class LoginFormState extends State<LoginForm> {
 
   login() async {
     if (await Auth.attemptLogin(context: context, username: _usernameController.text, password: _passwordController.text))
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => IndexScreen(),
-        ),
-      );
+      Navigator.pushReplacementNamed(context, IndexScreen.routeName);
   }
 }

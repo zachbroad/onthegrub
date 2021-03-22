@@ -1,9 +1,6 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:onthegrubv2/models/user_registration.dart';
-import 'package:onthegrubv2/services/api.dart';
-import 'package:onthegrubv2/services/auth.dart';
+import 'package:onthegrubv2/data/models/user_registration.dart';
 import 'package:provider/provider.dart';
 
 class UserRegistrationLocation extends StatefulWidget {

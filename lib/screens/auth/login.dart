@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onthegrubv2/models/user.dart';
+import 'package:onthegrubv2/data/models/user.dart';
 import 'package:onthegrubv2/screens/auth/forgot_password.dart';
 import 'package:provider/provider.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onthegrubv2/models/user_registration.dart';
+import 'package:onthegrubv2/data/models/user_registration.dart';
 import 'package:onthegrubv2/screens/auth/registration/password.dart';
 import 'package:onthegrubv2/screens/auth/registration/phone_number.dart';
 import 'package:onthegrubv2/screens/auth/registration/username.dart';

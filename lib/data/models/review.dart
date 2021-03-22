@@ -1,6 +1,6 @@
-import 'package:onthegrubv2/models/review_truck.dart';
-import 'package:onthegrubv2/models/user.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:onthegrubv2/data/models/review_truck.dart';
+import 'package:onthegrubv2/data/models/user.dart';
 
 part 'review.g.dart';
 

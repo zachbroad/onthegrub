@@ -6,25 +6,23 @@ import 'package:onthegrubv2/services/auth.dart';
 class Auth {
   static Future<bool> attemptLogin(
       {@required BuildContext context, @required String username, @required String password, bool formKeyValid = true}) async {
-// TODO: REDO THIS, THIS IS AWFUL
+    final auth = SnackBar(
+      content: Text('Attempting authentication...'),
+    );
+    final incorrect = SnackBar(
+      backgroundColor: Colors.red,
+      content: Text('Incorrect username or password.'),
+    );
     if (formKeyValid) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Attempting authentication...'),
-        ),
-      );
+      // ScaffoldMessenger.of(context).showSnackBar(auth);
       if (await AuthService.login(username, password, context)) {
         FlutterSecureStorage fss = FlutterSecureStorage();
         await fss.write(key: 'username', value: username);
+        ScaffoldMessenger.of(context).hideCurrentSnackBar();
         return true;
       } else {
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            backgroundColor: Colors.red,
-            content: Text('Incorrect username or password.'),
-          ),
-        );
+        ScaffoldMessenger.of(context).showSnackBar(incorrect);
         return false;
       }
     } else

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onthegrubv2/models/truck.dart';
+import 'package:onthegrubv2/data/models/truck.dart';
 
 class SuggestedSection extends StatelessWidget {
   final List<Truck> trucks;

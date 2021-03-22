@@ -1,4 +1,4 @@
-import 'package:onthegrubv2/models/user_registration.dart';
+import 'package:onthegrubv2/data/models/user_registration.dart';
 import 'package:onthegrubv2/screens/auth/registration/widgets/last_page_button.dart';
 import 'package:onthegrubv2/screens/auth/registration/widgets/next_page_button.dart';
 import 'package:onthegrubv2/screens/auth/registration/widgets/text_field_next_button.dart';

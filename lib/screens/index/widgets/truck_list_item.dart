@@ -1,9 +1,8 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:onthegrubv2/models/truck.dart';
-import 'package:onthegrubv2/models/user.dart';
-import 'package:provider/provider.dart';
+import 'package:onthegrubv2/data/models/truck.dart';
+import 'package:onthegrubv2/data/models/user.dart';
 
 class TruckListItem extends StatefulWidget {
   final Truck truck;
