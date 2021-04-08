@@ -2,16 +2,16 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
-import 'package:onthegrubv2/data/models/user.dart';
-import 'package:onthegrubv2/data/models/user_registration.dart';
-import 'package:onthegrubv2/services/api.dart';
-import 'package:onthegrubv2/util/urls.dart';
+import 'package:onthegrubv2/core/auth/login/models/user.dart';
+import 'package:onthegrubv2/core/auth/registration/models/user_registration.dart';
+import 'package:onthegrubv2/utils/services/rest_api_service.dart';
+import 'package:onthegrubv2/constants/api_path.dart';
 import 'package:provider/provider.dart';
 
 class AuthService {
   static Future<dynamic> resetPassword(email) async {
     try {
-      final response = await http.post(Uri.parse('${URLS.BASE_URL}/rest-auth/password/reset/'),
+      final response = await http.post(Uri.parse('${ApiPath.BASE_URL}/rest-auth/password/reset/'),
           headers: {'Accept': 'application/json'}, body: {"email": "$email"});
       if (response.statusCode == 200) {
         return response;
@@ -32,7 +32,7 @@ class AuthService {
     String _token;
     bool ret = false;
     try {
-      final response = await http.post(Uri.parse('${URLS.BASE_URL}/login-token/'),
+      final response = await http.post(Uri.parse('${ApiPath.BASE_URL}/login-token/'),
           headers: {'Accept': 'application/json'}, body: {"username": "$username", "password": "$password"});
       print(response.statusCode);
       if (response.statusCode == 200) {
@@ -52,7 +52,7 @@ class AuthService {
   static Future<User> getUserProfile(token, context) async {
     var profile;
     try {
-      final response = await http.get(Uri.parse('${URLS.BASE_URL}/api/profile/?format=json'),
+      final response = await http.get(Uri.parse('${ApiPath.BASE_URL}/api/profile/?format=json'),
           headers: {'Accept': 'application/json', "Authorization": "Token $token"});
       print(response.statusCode);
       var decode = json.decode(response.body);
@@ -69,7 +69,7 @@ class AuthService {
   static Future<bool> verifyToken(String token) async {
     try {
       final response = await http
-          .post(Uri.parse('${URLS.BASE_URL}/validate-token/'), headers: {'Accept': 'application/json'}, body: {"token": "$token"});
+          .post(Uri.parse('${ApiPath.BASE_URL}/validate-token/'), headers: {'Accept': 'application/json'}, body: {"token": "$token"});
       print(response.statusCode);
       if (response.statusCode == 200) {
         return true;
@@ -87,7 +87,7 @@ class AuthService {
   static Future<dynamic> register(UserRegistration user) async {
     try {
       final response = await http.post(
-        Uri.parse('${URLS.BASE_URL}/rest-auth/registration/'),
+        Uri.parse('${ApiPath.BASE_URL}/rest-auth/registration/'),
         headers: {'Accept': 'application/json'},
         body: {
           "username": user.username,

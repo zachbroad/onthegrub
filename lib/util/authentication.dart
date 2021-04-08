@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:onthegrubv2/screens/auth/login.dart';
+import 'package:onthegrubv2/core/auth/login/screens/login.dart';
 import 'package:onthegrubv2/services/auth.dart';
 
 class Auth {

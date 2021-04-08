@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:location/location.dart';
 import 'package:onthegrubv2/blocs/location_cubit.dart';
-import 'package:onthegrubv2/data/models/user.dart';
-import 'package:onthegrubv2/routes.dart';
-import 'package:onthegrubv2/screens/auth/login.dart';
-import 'package:onthegrubv2/screens/auth/splash_screen.dart';
-import 'package:onthegrubv2/themes/state_notifier.dart';
-import 'package:onthegrubv2/themes/theme.dart';
+import 'package:onthegrubv2/config/themes/state_notifier.dart';
+import 'package:onthegrubv2/config/themes/theme.dart';
+import 'package:onthegrubv2/core/auth/splash_screen.dart';
+import 'package:onthegrubv2/core/auth/login/models/user.dart';
+import 'package:onthegrubv2/config/routes/routes.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -27,9 +25,7 @@ void main() async {
       ChangeNotifierProvider<User>(
         create: (_) => User(),
       ),
-      BlocProvider(
-        create: (_) => LocationCubit(Location()),
-      ),
+      BlocProvider(create: (_) => LocationCubit()),
     ],
     child: Consumer<AppStateNotifier>(
       builder: (context, appState, child) {
