@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:onthegrubv2/core/auth/login/bloc/login_cubit.dart';
 import 'package:onthegrubv2/core/auth/registration/screens/user_registration.dart';
-import 'package:onthegrubv2/core/auth/login/models/user.dart';
+import 'package:onthegrubv2/core/auth/models/user.dart';
 import 'package:onthegrubv2/modules/index/index.dart';
 import 'package:onthegrubv2/util/authentication.dart';
 import 'package:provider/provider.dart';
@@ -87,7 +89,8 @@ class LoginFormState extends State<LoginForm> {
                     obscureText: true,
                     textInputAction: TextInputAction.go,
                     onFieldSubmitted: (_) async {
-                      login();
+                      BlocProvider.of<LoginCubit>(context).update(_usernameController.text, _passwordController.text);
+                      BlocProvider.of<LoginCubit>(context).login();
                     },
                     controller: _passwordController,
                     decoration: InputDecoration(
@@ -139,7 +142,7 @@ class LoginFormState extends State<LoginForm> {
                           decoration: BoxDecoration(shape: BoxShape.circle),
                           child: TextButton(
                             onPressed: () async {
-                              login();
+                              BlocProvider.of<LoginCubit>(context).login();
                             },
                             child: Text(
                               'Login',

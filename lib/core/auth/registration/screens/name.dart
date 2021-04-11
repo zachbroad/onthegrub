@@ -11,7 +11,7 @@ class UserRegistrationName extends StatefulWidget {
   final Function nextPage;
   final Function previousPage;
 
-  UserRegistrationName({this.nextPage, this.previousPage});
+  UserRegistrationName(this.nextPage, this.previousPage);
 
   @override
   _UserRegistrationNameState createState() => _UserRegistrationNameState();

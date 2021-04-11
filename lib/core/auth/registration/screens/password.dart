@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 class UserRegistrationPassword extends StatefulWidget {
   final Function nextPage;
   final Function previousPage;
-  UserRegistrationPassword({this.nextPage, this.previousPage});
+  UserRegistrationPassword(this.nextPage, this.previousPage);
 
   @override
   _UserRegistrationPasswordState createState() => _UserRegistrationPasswordState();

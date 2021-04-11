@@ -4,9 +4,8 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 
-Future<File> getFileFromAssets(String fileName) async {
-  final byteData = await rootBundle.load('assets/$fileName');
-
+Future<File> getFileFromAssets(String directory, String fileName) async {
+  final byteData = await rootBundle.load('assets/$directory/$fileName');
   final file = File('${(await getTemporaryDirectory()).path}/$fileName');
   await file.writeAsBytes(byteData.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
   return file;

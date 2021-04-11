@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 class UserRegistrationUsername extends StatefulWidget {
   final Function nextPage;
   final Function previousPage;
-  UserRegistrationUsername({this.nextPage, this.previousPage});
+  UserRegistrationUsername(this.nextPage, this.previousPage);
 
   @override
   _UserRegistrationUsernameState createState() => _UserRegistrationUsernameState();

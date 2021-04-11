@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:onthegrubv2/constants/assets_path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class WelcomeWidget extends StatefulWidget {
@@ -61,7 +62,7 @@ class _WelcomeWidgetState extends State<WelcomeWidget> with TickerProviderStateM
                                 ),
                                 Spacer(),
                                 Container(
-                                  child: Image.asset('assets/grubtruck.png'),
+                                  child: Image.asset(Assets.grubtruck),
                                   height: 64,
                                   width: 64,
                                 ),
@@ -119,7 +120,7 @@ class _WelcomeWidgetState extends State<WelcomeWidget> with TickerProviderStateM
                                 ),
                                 Spacer(),
                                 Container(
-                                  child: Image.asset('assets/grubtruck.png'),
+                                  child: Image.asset(Assets.grubtruck),
                                   height: 64,
                                   width: 64,
                                 ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onthegrubv2/blocs/location_cubit.dart';
-import 'package:onthegrubv2/core/auth/login/models/user.dart';
+import 'package:onthegrubv2/core/auth/models/user.dart';
 import 'package:onthegrubv2/modules/index/events/events.dart';
 import 'package:onthegrubv2/modules/index/home/home.dart';
 import 'package:onthegrubv2/modules/index/map/map.dart';
@@ -17,15 +17,6 @@ class IndexScreen extends StatefulWidget {
 
   @override
   IndexScreenState createState() => IndexScreenState();
-}
-
-enum PageOptions {
-  home,
-  // Make sure these 2 are commented out and stay in the correct spot or the IDs will not match
-  //  notifications,
-  search,
-  events,
-  map,
 }
 
 class IndexScreenState extends State<IndexScreen> {

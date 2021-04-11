@@ -14,10 +14,7 @@ class Auth {
       content: Text('Incorrect username or password.'),
     );
     if (formKeyValid) {
-      // ScaffoldMessenger.of(context).showSnackBar(auth);
       if (await AuthService.login(username, password, context)) {
-        FlutterSecureStorage fss = FlutterSecureStorage();
-        await fss.write(key: 'username', value: username);
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
         return true;
       } else {
@@ -27,15 +24,6 @@ class Auth {
       }
     } else
       return false;
-  }
-
-  static Future<Null> logout() async {
-    FlutterSecureStorage fss = FlutterSecureStorage();
-    await fss.delete(key: 'userLocation');
-    await fss.delete(key: 'lastKnownLocation');
-    await fss.delete(key: 'jwt');
-    await fss.delete(key: 'isLoggedIn');
-    await fss.delete(key: 'username');
   }
 
   static resetPassword({@required BuildContext buildContext, @required String email, bool formKeyValid = true}) async {

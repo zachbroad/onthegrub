@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:onthegrubv2/core/auth/bloc/auth_cubit.dart';
+import 'package:onthegrubv2/core/auth/screens/splash_screen.dart';
+import 'package:onthegrubv2/util/authentication.dart';
+import 'package:onthegrubv2/utils/services/secure_storage_service.dart';
 
 class UserProfileScreen extends StatefulWidget {
   @override
@@ -14,8 +19,10 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         actions: [
           IconButton(
             icon: Icon(Icons.settings),
-//    onPressed: GoTo(SettingsScreen()),
-          )
+            onPressed: () async {
+              await BlocProvider.of<AuthCubit>(context).logout();
+            },
+          ),
         ],
       ),
     );

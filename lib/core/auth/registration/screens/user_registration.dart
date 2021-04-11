@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onthegrubv2/core/auth/registration/models/user_registration.dart';
+import 'package:onthegrubv2/core/auth/registration/screens/location.dart';
 import 'package:onthegrubv2/core/auth/registration/screens/password.dart';
 import 'package:onthegrubv2/core/auth/registration/screens/phone_number.dart';
 import 'package:onthegrubv2/core/auth/registration/screens/username.dart';
@@ -19,12 +20,12 @@ PageController _pageController = PageController(initialPage: 0);
 
 class _RegistrationState extends State<Registration> {
   List<Widget> pages = [
-    UserRegistrationUsername(nextPage: nextPage, previousPage: previousPage),
-    UserRegistrationEmail(nextPage: nextPage, previousPage: previousPage),
-    UserRegistrationPassword(nextPage: nextPage, previousPage: previousPage),
-    UserRegistrationName(nextPage: nextPage, previousPage: previousPage),
+    UserRegistrationUsername(nextPage, previousPage),
+    UserRegistrationEmail(nextPage, previousPage),
+    UserRegistrationPassword(nextPage, previousPage),
+    UserRegistrationName(nextPage, previousPage),
     UserRegistrationPhoneNumber(nextPage, previousPage),
-    // UserRegistrationLocation(nextPage, previousPage),
+    UserRegistrationLocation(nextPage, previousPage),
   ];
 
   PageController pageController;

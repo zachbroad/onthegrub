@@ -1,10 +1,9 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:onthegrubv2/utils/services/secure_storage_service.dart';
 part 'location_state.dart';
 
 class LocationCubit extends Cubit<LocationState> {
@@ -13,7 +12,7 @@ class LocationCubit extends Cubit<LocationState> {
   LatLng userLocation;
   LatLng lastKnownUserLocation;
   bool _isListening = false;
-  FlutterSecureStorage fss;
+  SecureStorageService _secureStorageService;
   LocationData _location;
   StreamSubscription<LocationData> _locationSubscription;
 
@@ -24,22 +23,24 @@ class LocationCubit extends Cubit<LocationState> {
   String get address => _address;
 
   LocationCubit() : super(LocationInitial()) {
-    checkPermissions().then((e) {
-      fss = FlutterSecureStorage();
-      String fssUserLocation;
-      // Check users last known location *If they have one*
-      fss.read(key: 'lastKnownLocation').then((value) {
-        if (value != null) {
-          print('lastKnownLocation: $value');
-          fssUserLocation = value;
-          List locStringList = fssUserLocation.split(',');
-          try {
-            lastKnownUserLocation = LatLng(double.parse(locStringList[0]), double.parse(locStringList[1]));
-          } catch (e) {
-            throw FormatException('Tried to parse a double from location string');
+    location.hasPermission().then((e) {
+      if (e == PermissionStatus.granted || e == PermissionStatus.grantedLimited) {
+        _secureStorageService = SecureStorageService();
+        String fssUserLocation;
+        // Check users last known location *If they have one*
+        _secureStorageService.read('lastKnownLocation').then((value) {
+          if (value != null) {
+            print('lastKnownLocation: $value');
+            fssUserLocation = value;
+            List locStringList = fssUserLocation.split(',');
+            try {
+              lastKnownUserLocation = LatLng(double.parse(locStringList[0]), double.parse(locStringList[1]));
+            } catch (e) {
+              throw FormatException('Tried to parse a double from location string');
+            }
           }
-        }
-      });
+        });
+      }
     });
   }
 
@@ -89,8 +90,7 @@ class LocationCubit extends Cubit<LocationState> {
         userLocation = userLocation;
       _address = 'Using Current Location';
       _isListening = true;
-      fss.write(key: 'userLocation', value: '${userLocation.latitude},${userLocation.longitude}');
-      fss.write(key: 'isListening', value: _isListening.toString());
+      SecureStorageService().listenLocation(_isListening.toString(), '${userLocation.latitude},${userLocation.longitude}');
     });
   }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:onthegrubv2/constants/assets_path.dart';
 import 'package:onthegrubv2/core/auth/forgot_password/forgot_password.dart';
-import 'package:onthegrubv2/core/auth/login/models/user.dart';
+import 'package:onthegrubv2/core/auth/models/user.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/login_form.dart';
@@ -31,7 +32,7 @@ class LoginScreenState extends State<LoginScreen> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          image: DecorationImage(image: Image.asset("assets/bgmap.jpg").image, fit: BoxFit.fitHeight),
+          image: DecorationImage(image: Image.asset(Assets.bgmap).image, fit: BoxFit.fitHeight),
           gradient: LinearGradient(
             colors: [theme.colorScheme.primaryVariant, theme.colorScheme.primary],
             begin: Alignment.topLeft,
@@ -52,7 +53,7 @@ class LoginScreenState extends State<LoginScreen> {
                       children: [
                         SizedBox(height: 8.0),
 
-                        Image.asset("assets/grubtruck.png", width: 96, height: 96),
+                        Image.asset(Assets.grubtruck, width: 96, height: 96),
                         Text(
                           "OnTheGrub",
                           style: theme.textTheme.headline4,

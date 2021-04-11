@@ -2,10 +2,11 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
-import 'package:onthegrubv2/core/auth/login/models/user.dart';
+import 'package:onthegrubv2/core/auth/models/user.dart';
 import 'package:onthegrubv2/core/auth/registration/models/user_registration.dart';
 import 'package:onthegrubv2/utils/services/rest_api_service.dart';
 import 'package:onthegrubv2/constants/api_path.dart';
+import 'package:onthegrubv2/utils/services/secure_storage_service.dart';
 import 'package:provider/provider.dart';
 
 class AuthService {
@@ -38,9 +39,7 @@ class AuthService {
       if (response.statusCode == 200) {
         _token = json.decode(response.body)['token'];
         ret = await verifyToken(_token);
-        FlutterSecureStorage fss = FlutterSecureStorage();
-        await fss.write(key: 'jwt', value: _token);
-        await fss.write(key: 'last_logged_in', value: username);
+        SecureStorageService().storeToken(_token);
         getUserProfile(_token, context);
       }
     } catch (er) {

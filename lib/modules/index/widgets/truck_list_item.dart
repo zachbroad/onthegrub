@@ -1,7 +1,7 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:onthegrubv2/core/auth/login/models/user.dart';
+import 'package:onthegrubv2/core/auth/models/user.dart';
 import 'package:onthegrubv2/modules/index/search/models/truck.dart';
 
 class TruckListItem extends StatefulWidget {

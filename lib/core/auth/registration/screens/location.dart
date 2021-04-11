@@ -191,13 +191,13 @@ class _UserRegistrationLocationState extends State<UserRegistrationLocation> {
       components: [Component(Component.country, "us")],
     );
     // Display prection (google maps address lookup i think)
-    LatLng geolocation = await displayPrediction(selection, homeScaffoldKey.currentState);
+    LatLng geolocation = await displayPrediction(selection);
     if (selection != null) address = selection.description;
 
     return [address, geolocation];
   }
 
-  Future<Null> displayPrediction(Prediction p, ScaffoldState scaffold) async {
+  Future<Null> displayPrediction(Prediction p) async {
     if (p != null) {
       // get detail (lat/lng)
       GoogleMapsPlaces _places = GoogleMapsPlaces(
@@ -207,10 +207,7 @@ class _UserRegistrationLocationState extends State<UserRegistrationLocation> {
       PlacesDetailsResponse detail = await _places.getDetailsByPlaceId(p.placeId);
       final lat = detail.result.geometry.location.lat;
       final lng = detail.result.geometry.location.lng;
-
-      scaffold.showSnackBar(
-        SnackBar(content: Text("${p.description} - $lat/$lng")),
-      );
+      ;
     }
   }
 }

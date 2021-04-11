@@ -41,6 +41,7 @@ dependencies:
   equatable: ^2.0.0
   shared_preferences: ^2.0.3
   flutter_google_places: ^0.3.0
+  get_it: ^6.0.0
 
 
 dev_dependencies:
