@@ -49,7 +49,7 @@ class LocationCubit extends Cubit<LocationState> {
     location.hasPermission().then((isGranted) {
       if (isGranted == PermissionStatus.denied) {
         location.requestPermission().then((isGranted) {
-          if (isGranted == PermissionStatus.denied) {
+          if (isGranted == PermissionStatus.deniedForever) {
             // END OF ROAD
           } else if (isGranted == PermissionStatus.granted) {
             location.serviceEnabled().then((isGranted) {

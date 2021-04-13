@@ -1,6 +1,4 @@
-import 'dart:convert';
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:onthegrubv2/constants/api_path.dart';
 import 'package:onthegrubv2/core/auth/models/user.dart';

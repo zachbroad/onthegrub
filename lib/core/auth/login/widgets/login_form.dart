@@ -161,9 +161,4 @@ class LoginFormState extends State<LoginForm> {
       },
     );
   }
-
-  login() async {
-    if (await Auth.attemptLogin(context: context, username: _usernameController.text, password: _passwordController.text))
-      Navigator.pushReplacementNamed(context, IndexScreen.routeName);
-  }
 }
