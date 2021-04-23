@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:onthegrubv2/config/routes/router.dart';
+import 'package:onthegrubv2/config/routes/routes.dart';
 import 'package:onthegrubv2/constants/assets_path.dart';
-import 'package:onthegrubv2/core/auth/forgot_password/forgot_password.dart';
 import 'package:onthegrubv2/core/auth/models/user.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/login_form.dart';
 
 class LoginScreen extends StatefulWidget {
-  static const routeName = '/login';
-
   @override
   LoginScreenState createState() => LoginScreenState();
 }
@@ -66,7 +65,7 @@ class LoginScreenState extends State<LoginScreen> {
                         Center(
                           child: GestureDetector(
                             child: Text('Forgot password?'),
-                            onTap: () => Navigator.pushNamed(context, ForgotPassword.routeName),
+                            onTap: () => AppRouter.router.navigateTo(context, Routes.forgotPassword),
                           ),
                         ),
                         SizedBox(height: 16),

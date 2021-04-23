@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:onthegrubv2/modules/index/search/models/truck.dart';
+import 'package:onthegrubv2/modules/index/truck_search/models/truck.dart';
 
 part 'event.g.dart';
 

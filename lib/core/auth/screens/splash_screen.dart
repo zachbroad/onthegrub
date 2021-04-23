@@ -7,8 +7,6 @@ import 'dart:async';
 import 'package:onthegrubv2/utils/services/rest_api_service.dart';
 
 class SplashScreen extends StatefulWidget {
-  static const String routeName = '/splash_screen';
-
   @override
   State<StatefulWidget> createState() => _SplashScreenState();
 }
@@ -34,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
-  startTimer() {
+  startTimer() async {
     Timer(Duration(seconds: 1), () {
       BlocProvider.of<AuthCubit>(context).authenticate();
     });

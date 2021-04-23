@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:onthegrubv2/modules/index/search/bloc/trucks_cubit.dart';
-import 'package:onthegrubv2/modules/index/search/models/truck.dart';
+import 'package:onthegrubv2/modules/index/truck_search/bloc/trucks_cubit.dart';
+import 'package:onthegrubv2/modules/index/truck_search/models/truck.dart';
 
-class TrucksList extends StatefulWidget {
-  static String routeName = "/trucks/";
-
+class TruckSearchScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _TrucksListState();
+    return _TruckSearchScreenState();
   }
 }
 
@@ -27,7 +25,7 @@ class TruckListItem extends StatelessWidget {
   }
 }
 
-class _TrucksListState extends State<TrucksList> {
+class _TruckSearchScreenState extends State<TruckSearchScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

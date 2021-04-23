@@ -6,7 +6,7 @@ import 'package:onthegrubv2/data/models/menu_item.dart';
 import 'package:onthegrubv2/data/models/tag.dart';
 import 'package:onthegrubv2/constants/api_path.dart';
 import 'package:dio/dio.dart';
-import 'package:onthegrubv2/modules/index/search/models/truck.dart';
+import 'package:onthegrubv2/modules/index/truck_search/models/truck.dart';
 
 class APIService {
   /* HELPER START */

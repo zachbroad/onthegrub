@@ -1,8 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:onthegrubv2/core/auth/login/screens/login.dart';
+import 'package:onthegrubv2/config/routes/routes.dart';
 import 'package:onthegrubv2/core/auth/models/user.dart';
 import 'package:onthegrubv2/core/auth/repositories/auth_repository.dart';
-import 'package:onthegrubv2/modules/index/index.dart';
 import 'package:onthegrubv2/services/navigation_service.dart';
 import 'package:onthegrubv2/utils/services/secure_storage_service.dart';
 part 'auth_state.dart';
@@ -22,20 +21,21 @@ class AuthCubit extends Cubit<AuthState> {
     if (_loggedIn) {
       User _user = await AuthRepository().retrieveUserProfile();
       emit(AuthState(_user, _loggedIn));
-      NavigationService.instance.goToReplacementNamed(IndexScreen.routeName);
+      NavigationService.instance.goToReplacementNamed(Routes.index);
     } else {
       await SecureStorageService().logoutCurrentUser();
       emit(AuthState(User(), _loggedIn));
-      NavigationService.instance.goToReplacementNamed(LoginScreen.routeName);
+      NavigationService.instance.goToReplacementNamed(Routes.login);
     }
   }
 
   // 1. Delete all user-related data
   // 2. emit
   // 3. Navigate
-  Future<void> logout() async {
+  Future<bool> logout() async {
     await SecureStorageService().logoutCurrentUser();
     emit(AuthState(User(), false));
-    NavigationService.instance.goToReplacementNamed(LoginScreen.routeName);
+    return true;
+    NavigationService.instance.goToReplacementNamed(Routes.login);
   }
 }

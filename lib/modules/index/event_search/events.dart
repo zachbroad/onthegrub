@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-class EventsScreen extends StatefulWidget {
-  static const routeName = '/events';
-
+class EventSearchScreen extends StatefulWidget {
   @override
-  _EventsScreenState createState() => _EventsScreenState();
+  _EventSearchScreenState createState() => _EventSearchScreenState();
 }
 
-class _EventsScreenState extends State<EventsScreen> {
+class _EventSearchScreenState extends State<EventSearchScreen> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);

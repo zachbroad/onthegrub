@@ -1,12 +1,23 @@
-import 'package:flutter/widgets.dart';
-import 'package:onthegrubv2/config/routes/core_routes.dart';
-import 'package:onthegrubv2/config/routes/index_routes.dart';
+import 'package:fluro/fluro.dart';
+import 'package:flutter/material.dart';
+import './route_handlers.dart';
 
 class Routes {
-  static Map<String, WidgetBuilder> all() {
-    Map<String, WidgetBuilder> all = {};
-    all.addAll(CoreRoutes.routes);
-    all.addAll(IndexRoutes.routes);
-    return all;
+  static String index = "/";
+  static String splashScreen = "/splash_screen";
+  static String login = "/login";
+  static String registration = "/registration";
+  static String forgotPassword = "/forgot_password";
+
+  static void configureRoutes(FluroRouter router) {
+    router.notFoundHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      print("ROUTE WAS NOT FOUND !!!");
+      return;
+    });
+    router.define(index + ":initialRoute", handler: indexHandler);
+    router.define(splashScreen, handler: splashScreenHandler);
+    router.define(registration, handler: registrationHandler);
+    router.define(login, handler: loginHandler);
+    router.define(forgotPassword, handler: forgotPasswordHandler);
   }
 }

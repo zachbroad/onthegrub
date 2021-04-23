@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:onthegrubv2/config/routes/router.dart' show AppRouter;
+import 'package:onthegrubv2/config/routes/routes.dart';
 import 'package:onthegrubv2/core/auth/login/screens/login.dart';
 import 'package:onthegrubv2/services/auth.dart';
 
@@ -26,9 +27,9 @@ class Auth {
       return false;
   }
 
-  static resetPassword({@required BuildContext buildContext, @required String email, bool formKeyValid = true}) async {
+  static resetPassword({@required BuildContext context, @required String email, bool formKeyValid = true}) async {
     if (formKeyValid) {
-      ScaffoldMessenger.of(buildContext).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Attempting to send password reset email...'),
         ),
@@ -42,13 +43,13 @@ class Auth {
 
     // Check user creation
     if (response.statusCode == 200) {
-      ScaffoldMessenger.of(buildContext).hideCurrentSnackBar();
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
 
-      Navigator.pushNamed(buildContext, LoginScreen.routeName);
+      AppRouter.router.navigateTo(context, Routes.login);
     }
     // Handle errors from register POST body response
     else {
-      ScaffoldMessenger.of(buildContext).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: Colors.red,
           content: Text('Reset password failed.'),

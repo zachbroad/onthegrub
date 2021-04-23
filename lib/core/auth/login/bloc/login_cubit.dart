@@ -1,9 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:onthegrubv2/config/routes/routes.dart';
 import 'package:onthegrubv2/core/auth/login/repositories/login_repository.dart';
-import 'package:onthegrubv2/core/auth/screens/splash_screen.dart';
-import 'package:onthegrubv2/modules/index/index.dart';
 import 'package:onthegrubv2/services/navigation_service.dart';
-import 'package:onthegrubv2/utils/services/secure_storage_service.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
@@ -18,6 +16,6 @@ class LoginCubit extends Cubit<LoginState> {
     await LoginRepository().retrieveToken(state.username, state.password);
     // TODO: If I handle "Remember username" or "Remember password" -> do it here
     emit(LoginState('', ''));
-    NavigationService.instance.goToReplacementNamed(SplashScreen.routeName);
+    NavigationService.instance.goToReplacementNamed(Routes.splashScreen);
   }
 }

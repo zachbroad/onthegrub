@@ -44,7 +44,7 @@ class ForgotPasswordFormState extends State<ForgotPasswordForm> {
                 ),
                 child: TextButton(
                   onPressed: () async {
-                    Auth.resetPassword(buildContext: context, email: _emailController.text, formKeyValid: _formKey.currentState.validate());
+                    Auth.resetPassword(context: context, email: _emailController.text, formKeyValid: _formKey.currentState.validate());
                   },
                   child: Text('Reset Password'),
                 ),

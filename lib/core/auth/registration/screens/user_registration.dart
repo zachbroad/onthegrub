@@ -9,16 +9,14 @@ import 'package:provider/provider.dart';
 import 'email.dart';
 import 'name.dart';
 
-class Registration extends StatefulWidget {
-  static const routeName = '/user_registration';
-
+class RegistrationScreen extends StatefulWidget {
   @override
-  _RegistrationState createState() => _RegistrationState();
+  _RegistrationScreenState createState() => _RegistrationScreenState();
 }
 
 PageController _pageController = PageController(initialPage: 0);
 
-class _RegistrationState extends State<Registration> {
+class _RegistrationScreenState extends State<RegistrationScreen> {
   List<Widget> pages = [
     UserRegistrationUsername(nextPage, previousPage),
     UserRegistrationEmail(nextPage, previousPage),

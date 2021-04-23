@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onthegrubv2/blocs/location_cubit.dart';
 import 'package:onthegrubv2/core/auth/models/user.dart';
-import 'package:onthegrubv2/modules/index/events/events.dart';
+import 'package:onthegrubv2/modules/index/event_search/events.dart';
 import 'package:onthegrubv2/modules/index/home/home.dart';
 import 'package:onthegrubv2/modules/index/map/map.dart';
-import 'package:onthegrubv2/modules/index/search/screens/trucks.dart';
+import 'package:onthegrubv2/modules/index/truck_search/screens/trucks.dart';
 import 'package:onthegrubv2/modules/index/user_profile/user_profile.dart';
 import 'package:provider/provider.dart';
 
 class IndexScreen extends StatefulWidget {
-  static const routeName = '/';
   final int initialPage;
 
   const IndexScreen({this.initialPage});
@@ -24,8 +23,8 @@ class IndexScreenState extends State<IndexScreen> {
   int initialPage;
   var _pageOptions = [
     HomeScreen(),
-    TrucksList(),
-    EventsScreen(),
+    TruckSearchScreen(),
+    EventSearchScreen(),
     MapScreen(),
     UserProfileScreen(),
   ];
