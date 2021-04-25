@@ -12,12 +12,12 @@ class Routes {
   static void configureRoutes(FluroRouter router) {
     router.notFoundHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
       print("ROUTE WAS NOT FOUND !!!");
-      return;
+      return SafeArea(child: Text("Route not found! [${router.toString()}]" ));
     });
-    router.define(index + ":initialRoute", handler: indexHandler);
     router.define(splashScreen, handler: splashScreenHandler);
     router.define(registration, handler: registrationHandler);
     router.define(login, handler: loginHandler);
     router.define(forgotPassword, handler: forgotPasswordHandler);
+    router.define(index + ":initialRoute", handler: indexHandler);
   }
 }

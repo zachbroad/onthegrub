@@ -5,7 +5,7 @@ import 'package:onthegrubv2/core/auth/models/user.dart';
 import 'package:onthegrubv2/modules/index/event_search/events.dart';
 import 'package:onthegrubv2/modules/index/home/home.dart';
 import 'package:onthegrubv2/modules/index/map/map.dart';
-import 'package:onthegrubv2/modules/index/truck_search/screens/trucks.dart';
+import 'package:onthegrubv2/modules/index/truck_search/screens/truck_list.dart';
 import 'package:onthegrubv2/modules/index/user_profile/user_profile.dart';
 import 'package:provider/provider.dart';
 
