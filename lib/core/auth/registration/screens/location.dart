@@ -207,7 +207,6 @@ class _UserRegistrationLocationState extends State<UserRegistrationLocation> {
       PlacesDetailsResponse detail = await _places.getDetailsByPlaceId(p.placeId);
       final lat = detail.result.geometry.location.lat;
       final lng = detail.result.geometry.location.lng;
-      ;
     }
   }
 }

@@ -1,8 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:onthegrubv2/config/routes/routes.dart';
 import 'package:onthegrubv2/core/auth/models/user.dart';
 import 'package:onthegrubv2/core/auth/repositories/auth_repository.dart';
-import 'package:onthegrubv2/services/navigation_service.dart';
 import 'package:onthegrubv2/utils/services/secure_storage_service.dart';
 part 'auth_state.dart';
 
@@ -16,16 +14,16 @@ class AuthCubit extends Cubit<AuthState> {
   //
   // if false:
   // 2. Navigate
-  Future<void> authenticate() async {
+  Future<bool> authenticate() async {
     bool _loggedIn = await AuthRepository().validateToken();
     if (_loggedIn) {
       User _user = await AuthRepository().retrieveUserProfile();
       emit(AuthState(_user, _loggedIn));
-      NavigationService.instance.goToReplacementNamed(Routes.index);
+      return true;
     } else {
       await SecureStorageService().logoutCurrentUser();
       emit(AuthState(User(), _loggedIn));
-      NavigationService.instance.goToReplacementNamed(Routes.login);
+      return false;
     }
   }
 
@@ -36,6 +34,5 @@ class AuthCubit extends Cubit<AuthState> {
     await SecureStorageService().logoutCurrentUser();
     emit(AuthState(User(), false));
     return true;
-    NavigationService.instance.goToReplacementNamed(Routes.login);
   }
 }

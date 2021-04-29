@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:onthegrubv2/util/authentication.dart';
 import 'package:onthegrubv2/utils/mixins/validations_mixin.dart';
 
 class ForgotPasswordForm extends StatefulWidget {
@@ -44,7 +43,7 @@ class ForgotPasswordFormState extends State<ForgotPasswordForm> {
                 ),
                 child: TextButton(
                   onPressed: () async {
-                    Auth.resetPassword(context: context, email: _emailController.text, formKeyValid: _formKey.currentState.validate());
+                    // Auth.resetPassword(context: context, email: _emailController.text, formKeyValid: _formKey.currentState.validate());
                   },
                   child: Text('Reset Password'),
                 ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:onthegrubv2/config/routes/router.dart';
+import 'package:onthegrubv2/config/routes/routes.dart';
 import 'package:onthegrubv2/constants/assets_path.dart';
 import 'package:onthegrubv2/core/auth/bloc/auth_cubit.dart';
 import 'dart:async';
@@ -33,9 +35,11 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   startTimer() async {
-    Timer(Duration(seconds: 1), () {
-      BlocProvider.of<AuthCubit>(context).authenticate();
-    });
+    bool x = await BlocProvider.of<AuthCubit>(context).authenticate();
+    if (x)
+      AppRouter.router.navigateTo(context, Routes.index);
+    else
+      AppRouter.router.navigateTo(context, Routes.login);
   }
 
   // navigateUser() async {

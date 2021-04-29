@@ -1,10 +1,10 @@
-import 'package:onthegrubv2/core/auth/registration/models/user_registration.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:onthegrubv2/core/auth/registration/bloc/registration_cubit.dart';
 import 'package:onthegrubv2/core/auth/registration/widgets/last_page_button.dart';
 import 'package:onthegrubv2/core/auth/registration/widgets/next_page_button.dart';
 import 'package:onthegrubv2/core/auth/registration/widgets/text_field_next_button.dart';
 import 'package:onthegrubv2/modules/widgets/custom_form_field.dart';
 import 'package:onthegrubv2/utils/mixins/validations_mixin.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
 class UserRegistrationEmail extends StatefulWidget {
@@ -22,14 +22,14 @@ class _UserRegistrationEmailState extends State<UserRegistrationEmail> {
   FocusNode emailFocus = FocusNode();
   FocusNode emailConfirmFocus = FocusNode();
   final _formKey = GlobalKey<FormState>();
-  UserRegistration user;
+  RegistrationCubit _registrationCubit;
 
   @override
   void initState() {
     super.initState();
-    user = Provider.of<UserRegistration>(context, listen: false);
-    email.text = user.email;
-    confirmEmail.text = user.confirmEmail;
+    _registrationCubit = BlocProvider.of<RegistrationCubit>(context, listen: false);
+    email.text = _registrationCubit.state.userRegistration.email;
+    confirmEmail.text = _registrationCubit.state.userRegistration.confirmEmail;
   }
 
   @override
@@ -43,8 +43,6 @@ class _UserRegistrationEmailState extends State<UserRegistrationEmail> {
 
   @override
   Widget build(BuildContext context) {
-    ColorScheme colorScheme = Theme.of(context).colorScheme;
-
     return Container(
         color: Colors.white,
         child: Stack(
@@ -98,7 +96,6 @@ class _UserRegistrationEmailState extends State<UserRegistrationEmail> {
                             onPressed: _validateAndNextPage,
                           ),
                         ]),
-                        // TODO: Grab from old project
                         // MailingListCheckbox(value: user.mailingList, onChanged: _updateMailingList),
                       ],
                     ),
@@ -113,13 +110,13 @@ class _UserRegistrationEmailState extends State<UserRegistrationEmail> {
   }
 
   _updateMailingList(bool val) {
-    user.mailingList = val;
+    _registrationCubit.state.userRegistration.mailingList = val;
   }
 
   _validateAndNextPage() {
     if (_formKey.currentState.validate() && email.text == confirmEmail.text) {
-      user.email = email.text;
-      user.confirmEmail = confirmEmail.text;
+      _registrationCubit.state.userRegistration.email = email.text;
+      _registrationCubit.state.userRegistration.confirmEmail = confirmEmail.text;
       FocusScope.of(context).unfocus();
       widget.nextPage();
     }

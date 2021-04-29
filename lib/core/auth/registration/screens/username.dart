@@ -1,10 +1,10 @@
-import 'package:onthegrubv2/core/auth/registration/models/user_registration.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:onthegrubv2/core/auth/registration/bloc/registration_cubit.dart';
 import 'package:onthegrubv2/core/auth/registration/widgets/cancel_button.dart';
 import 'package:onthegrubv2/core/auth/registration/widgets/next_page_button.dart';
 import 'package:onthegrubv2/core/auth/registration/widgets/text_field_next_button.dart';
 import 'package:onthegrubv2/modules/widgets/custom_form_field.dart';
 import 'package:onthegrubv2/utils/mixins/validations_mixin.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
 class UserRegistrationUsername extends StatefulWidget {
@@ -19,13 +19,13 @@ class UserRegistrationUsername extends StatefulWidget {
 class _UserRegistrationUsernameState extends State<UserRegistrationUsername> {
   TextEditingController username = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  UserRegistration user;
+  RegistrationCubit _registrationCubit;
 
   @override
   void initState() {
     super.initState();
-    user = Provider.of<UserRegistration>(context, listen: false);
-    username.text = user.username;
+    _registrationCubit = BlocProvider.of<RegistrationCubit>(context, listen: false);
+    username.text = _registrationCubit.state.userRegistration.username;
   }
 
   @override
@@ -36,8 +36,7 @@ class _UserRegistrationUsernameState extends State<UserRegistrationUsername> {
 
   @override
   Widget build(BuildContext context) {
-    ColorScheme colorScheme = Theme.of(context).colorScheme;
-    UserRegistration user = Provider.of<UserRegistration>(context);
+    _registrationCubit = BlocProvider.of<RegistrationCubit>(context);
 
     return Container(
         color: Colors.white,
@@ -67,7 +66,7 @@ class _UserRegistrationUsernameState extends State<UserRegistrationUsername> {
                                 validator: (username) => Validate.name(username),
                                 onFieldSubmitted: (username) {
                                   if (_formKey.currentState.validate()) {
-                                    user.username = username;
+                                    _registrationCubit.state.userRegistration.username = username;
                                     FocusScope.of(context).unfocus();
                                     widget.nextPage();
                                   }
@@ -93,7 +92,7 @@ class _UserRegistrationUsernameState extends State<UserRegistrationUsername> {
 
   _validateAndNextPage() {
     if (_formKey.currentState.validate()) {
-      user.username = username.text;
+      _registrationCubit.state.userRegistration.username = username.text;
       FocusScope.of(context).unfocus();
       widget.nextPage();
     }

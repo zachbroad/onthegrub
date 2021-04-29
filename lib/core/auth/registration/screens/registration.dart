@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:onthegrubv2/core/auth/registration/models/user_registration.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:onthegrubv2/core/auth/registration/bloc/registration_cubit.dart';
 import 'package:onthegrubv2/core/auth/registration/screens/location.dart';
 import 'package:onthegrubv2/core/auth/registration/screens/password.dart';
 import 'package:onthegrubv2/core/auth/registration/screens/phone_number.dart';
 import 'package:onthegrubv2/core/auth/registration/screens/username.dart';
-import 'package:provider/provider.dart';
 
 import 'email.dart';
 import 'name.dart';
@@ -26,15 +26,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     UserRegistrationLocation(nextPage, previousPage),
   ];
 
-  PageController pageController;
   int currentPage;
-  UserRegistration user;
+  PageController pageController;
 
   @override
   void dispose() {
     super.dispose();
     pageController.dispose();
-    user != null ?? user.dispose();
   }
 
   @override
@@ -42,13 +40,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     super.initState();
     _pageController = PageController(initialPage: 0);
     pageController = _pageController;
-    user = UserRegistration();
   }
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<UserRegistration>(
-      create: (_) => user,
+    return BlocProvider(
+      create: (_) => RegistrationCubit(),
       child: Scaffold(
         body: PageView(
           physics: NeverScrollableScrollPhysics(),

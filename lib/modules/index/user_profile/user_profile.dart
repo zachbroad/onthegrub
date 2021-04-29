@@ -14,7 +14,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Text("Username"),
+        leading: Text(BlocProvider.of<AuthCubit>(context).state.user.username),
         actions: [
           IconButton(
             icon: Icon(Icons.settings),

@@ -542,23 +542,6 @@ class APIService {
 
 /* MAILING LIST*/
 
-  static Future<bool> signUpMailingList(String email) async {
-    Dio dio = Dio();
-
-    FormData formData = FormData.fromMap({'email': email});
-    var response = await dio.post(
-      '${ApiPath.MAILING_LIST_URL}',
-      data: formData,
-      options: Options(
-        followRedirects: false,
-        validateStatus: (status) {
-          return status < 401;
-        },
-      ),
-    );
-    return response.data;
-  }
-
   static Future<Map<String, dynamic>> patchNotification(int id, {bool seen}) async {
     Dio dio = Dio();
     Map<String, dynamic> e = {'seen': seen.toString()};

@@ -2,7 +2,7 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:onthegrubv2/core/auth/forgot_password/forgot_password.dart';
 import 'package:onthegrubv2/core/auth/login/screens/login.dart';
-import 'package:onthegrubv2/core/auth/registration/screens/user_registration.dart';
+import 'package:onthegrubv2/core/auth/registration/screens/registration.dart';
 import 'package:onthegrubv2/core/auth/screens/splash_screen.dart';
 import 'package:onthegrubv2/modules/index/index.dart';
 
@@ -39,14 +39,6 @@ var indexHandler = Handler(
       case "2":
         return IndexScreen(
           initialPage: 2,
-        );
-      case "3":
-        return IndexScreen(
-          initialPage: 3,
-        );
-      case "4":
-        return IndexScreen(
-          initialPage: 4,
         );
       default:
         return IndexScreen();

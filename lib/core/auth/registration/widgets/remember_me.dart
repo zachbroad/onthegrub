@@ -6,7 +6,6 @@ class RememberMe extends StatefulWidget {
 }
 
 class _RememberMeState extends State<RememberMe> {
-  // TODO: functionality
   @override
   Widget build(BuildContext context) {
     Color textColor = Theme.of(context).brightness == Brightness.dark ? Colors.white.withOpacity(.7) : Colors.black.withOpacity(.7);

@@ -1,13 +1,13 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:onthegrubv2/core/auth/registration/models/user_registration.dart';
+import 'package:onthegrubv2/config/routes/router.dart';
+import 'package:onthegrubv2/config/routes/routes.dart';
+import 'package:onthegrubv2/core/auth/registration/bloc/registration_cubit.dart';
 import 'package:onthegrubv2/core/auth/registration/widgets/last_page_button.dart';
-import 'package:onthegrubv2/services/auth.dart';
 import 'package:onthegrubv2/utils/mixins/validations_mixin.dart';
-import 'package:provider/provider.dart';
 
 // TODO: 2-factor verification
 
@@ -22,20 +22,28 @@ class UserRegistrationPhoneNumber extends StatefulWidget {
 class _UserRegistrationPhoneNumberState extends State<UserRegistrationPhoneNumber> {
   TextEditingController phone = TextEditingController();
 
-  MaskTextInputFormatter maskFormatter = new MaskTextInputFormatter(mask: '(###) ###-####', filter: {"#": RegExp(r'[0-9]')});
+  MaskTextInputFormatter maskFormatter = new MaskTextInputFormatter(mask: '(###) ###-####', filter: {"#": RegExp(r'[0-9]+')});
   final _formKey = GlobalKey<FormState>();
-  UserRegistration user;
+  RegistrationCubit _registrationCubit;
 
   @override
   void initState() {
     super.initState();
-    user = Provider.of<UserRegistration>(context, listen: false);
-    phone.text = user.phone;
+    _registrationCubit = BlocProvider.of<RegistrationCubit>(context, listen: false);
+    phone.text = _registrationCubit.state.userRegistration.phone;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    phone.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    _registrationCubit = BlocProvider.of<RegistrationCubit>(context);
+
     return Container(
         color: Colors.white,
         child: Stack(children: [
@@ -65,6 +73,11 @@ class _UserRegistrationPhoneNumberState extends State<UserRegistrationPhoneNumbe
                           child: TextFormField(
                             style: TextStyle(color: Colors.black87),
                             textInputAction: TextInputAction.go,
+                            onChanged: (text) {
+                              // hacky
+                              _registrationCubit.state.userRegistration.phone = text;
+                              phone.selection = TextSelection.fromPosition(TextPosition(offset: phone.text.length));
+                            },
                             onFieldSubmitted: (phone) {
                               _validateAndNextPage();
                             },
@@ -110,26 +123,27 @@ class _UserRegistrationPhoneNumberState extends State<UserRegistrationPhoneNumbe
                   style: TextStyle(color: Colors.black87),
                 ),
                 onPressed: () async {
-                  var response = await AuthService.register(user);
-                  print(response.statusCode);
-                  if (response.statusCode == 201 || response.statusCode == 200) {
-                    // If the user signed up for the mailing list and their email is valid
-                    // TODO: mailing list
-                    // user.mailingList ?? await APIService.signUpMailingList(user.email);
-                    Navigator.pop(context, true);
-                  } else if (response.statusCode == 400) {
-                    // Check for errors thrown by db
-                    Map<String, dynamic> data = json.decode(response.body);
-                    data.forEach((key, value) {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text('$key: ${value[0]}'),
-                      ));
-                    });
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(response.statusCode.toString()),
-                    ));
-                  }
+                  bool x = await _registrationCubit.register();
+                  AppRouter.router.navigateTo(context, Routes.login);
+                  // print(response.statusCode);
+                  // if (response.statusCode == 201 || response.statusCode == 200) {
+                  //   // If the user signed up for the mailing list and their email is valid
+                  //   // TODO: mailing list
+                  //   // user.mailingList ?? await APIService.signUpMailingList(user.email);
+                  //   Navigator.pop(context, true);
+                  // } else if (response.statusCode == 400) {
+                  //   // Check for errors thrown by db
+                  //   Map<String, dynamic> data = json.decode(response.body);
+                  //   data.forEach((key, value) {
+                  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  //       content: Text('$key: ${value[0]}'),
+                  //     ));
+                  //   });
+                  // } else {
+                  //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  //     content: Text(response.statusCode.toString()),
+                  //   ));
+                  // }
                 },
               ),
             ),
@@ -140,7 +154,7 @@ class _UserRegistrationPhoneNumberState extends State<UserRegistrationPhoneNumbe
 
   _validateAndNextPage() {
     if (_formKey.currentState.validate()) {
-      user.phone = phone.text;
+      _registrationCubit.state.userRegistration.phone = phone.text;
       FocusScope.of(context).unfocus();
       widget.nextPage();
     }

@@ -1,9 +1,5 @@
-// TODO: actual --> this is just a sample
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:onthegrubv2/constants/api_path.dart';
-import 'package:onthegrubv2/core/auth/models/user.dart';
 import 'package:onthegrubv2/utils/services/secure_storage_service.dart';
 
 class LoginRepository {

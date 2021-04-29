@@ -1,10 +1,10 @@
-import 'package:onthegrubv2/core/auth/registration/models/user_registration.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:onthegrubv2/core/auth/registration/bloc/registration_cubit.dart';
 import 'package:onthegrubv2/core/auth/registration/widgets/last_page_button.dart';
 import 'package:onthegrubv2/core/auth/registration/widgets/next_page_button.dart';
 import 'package:onthegrubv2/core/auth/registration/widgets/text_field_next_button.dart';
 import 'package:onthegrubv2/modules/widgets/custom_form_field.dart';
 import 'package:onthegrubv2/utils/mixins/validations_mixin.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
 class UserRegistrationName extends StatefulWidget {
@@ -21,16 +21,16 @@ class _UserRegistrationNameState extends State<UserRegistrationName> {
   TextEditingController firstName = TextEditingController();
   TextEditingController lastName = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  UserRegistration user;
+  RegistrationCubit _registrationCubit;
   FocusNode firstNameFocus;
   FocusNode lastNameFocus;
 
   @override
   void initState() {
     super.initState();
-    user = Provider.of<UserRegistration>(context, listen: false);
-    firstName.text = user.firstName;
-    lastName.text = user.lastName;
+    _registrationCubit = BlocProvider.of<RegistrationCubit>(context, listen: false);
+    firstName.text = _registrationCubit.state.userRegistration.firstName;
+    lastName.text = _registrationCubit.state.userRegistration.lastName;
     firstNameFocus = FocusNode();
     lastNameFocus = FocusNode();
   }
@@ -46,6 +46,7 @@ class _UserRegistrationNameState extends State<UserRegistrationName> {
 
   @override
   Widget build(BuildContext context) {
+    _registrationCubit = BlocProvider.of<RegistrationCubit>(context);
     return Container(
         color: Colors.white,
         child: Stack(
@@ -115,8 +116,8 @@ class _UserRegistrationNameState extends State<UserRegistrationName> {
 
   _validateAndNextPage() {
     if (_formKey.currentState.validate()) {
-      user.firstName = firstName.text;
-      user.lastName = lastName.text;
+      _registrationCubit.state.userRegistration.firstName = firstName.text;
+      _registrationCubit.state.userRegistration.lastName = lastName.text;
       FocusScope.of(context).unfocus();
       widget.nextPage();
     }

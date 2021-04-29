@@ -1,10 +1,10 @@
-import 'package:onthegrubv2/core/auth/registration/models/user_registration.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:onthegrubv2/core/auth/registration/bloc/registration_cubit.dart';
 import 'package:onthegrubv2/core/auth/registration/widgets/last_page_button.dart';
 import 'package:onthegrubv2/core/auth/registration/widgets/next_page_button.dart';
 import 'package:onthegrubv2/core/auth/registration/widgets/text_field_next_button.dart';
 import 'package:onthegrubv2/modules/widgets/custom_form_field.dart';
 import 'package:onthegrubv2/utils/mixins/validations_mixin.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
 class UserRegistrationPassword extends StatefulWidget {
@@ -20,16 +20,16 @@ class _UserRegistrationPasswordState extends State<UserRegistrationPassword> {
   TextEditingController password1 = TextEditingController();
   TextEditingController password2 = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  UserRegistration user;
+  RegistrationCubit _registrationCubit;
   FocusNode password1Focus;
   FocusNode password2Focus;
 
   @override
   void initState() {
     super.initState();
-    user = Provider.of<UserRegistration>(context, listen: false);
-    password1.text = user.password1;
-    password2.text = user.password2;
+    _registrationCubit = BlocProvider.of<RegistrationCubit>(context, listen: false);
+    password1.text = _registrationCubit.state.userRegistration.password1;
+    password2.text = _registrationCubit.state.userRegistration.password2;
     password1Focus = FocusNode();
     password2Focus = FocusNode();
   }
@@ -45,8 +45,7 @@ class _UserRegistrationPasswordState extends State<UserRegistrationPassword> {
 
   @override
   Widget build(BuildContext context) {
-    ColorScheme colorScheme = Theme.of(context).colorScheme;
-
+    _registrationCubit = BlocProvider.of<RegistrationCubit>(context);
     return Container(
         color: Colors.white,
         child: Stack(
@@ -114,8 +113,8 @@ class _UserRegistrationPasswordState extends State<UserRegistrationPassword> {
 
   _validateAndNextPage() {
     if (_formKey.currentState.validate()) {
-      user.password1 = password1.text;
-      user.password2 = password2.text;
+      _registrationCubit.state.userRegistration.password1 = password1.text;
+      _registrationCubit.state.userRegistration.password2 = password2.text;
       FocusScope.of(context).unfocus();
       widget.nextPage();
     }
