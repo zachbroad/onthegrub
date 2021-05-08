@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onthegrubv2/config/routes/router.dart';
 import 'package:onthegrubv2/config/routes/routes.dart';
 import 'package:onthegrubv2/core/auth/bloc/auth_cubit.dart';
+import 'package:onthegrubv2/core/auth/models/user.dart';
 
 class UserProfileScreen extends StatefulWidget {
   @override
@@ -10,11 +11,19 @@ class UserProfileScreen extends StatefulWidget {
 }
 
 class _UserProfileScreenState extends State<UserProfileScreen> {
+  User _user;
+  @override
+  void initState() {
+    super.initState();
+    _user = BlocProvider.of<AuthCubit>(context, listen: false).state.user;
+  }
+
   @override
   Widget build(BuildContext context) {
+    _user = BlocProvider.of<AuthCubit>(context).state.user;
     return Scaffold(
       appBar: AppBar(
-        leading: Text(BlocProvider.of<AuthCubit>(context).state.user.username),
+        leading: Text(_user.username),
         actions: [
           IconButton(
             icon: Icon(Icons.settings),

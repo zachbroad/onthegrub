@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onthegrubv2/config/routes/router.dart';
 import 'package:onthegrubv2/config/routes/routes.dart';
+import 'package:onthegrubv2/core/auth/bloc/auth_cubit.dart';
 import 'package:onthegrubv2/core/auth/login/bloc/login_cubit.dart';
 
 class LoginForm extends StatefulWidget {
@@ -80,14 +81,7 @@ class LoginFormState extends State<LoginForm> {
                 style: TextStyle(color: Colors.black87),
                 obscureText: true,
                 textInputAction: TextInputAction.go,
-                onFieldSubmitted: (_) async {
-                  BlocProvider.of<LoginCubit>(context).update(_usernameController.text, _passwordController.text);
-                  bool x = await BlocProvider.of<LoginCubit>(context).login();
-                  if (x)
-                    AppRouter.router.navigateTo(context, Routes.index);
-                  else
-                    AppRouter.router.navigateTo(context, Routes.login);
-                },
+                onFieldSubmitted: (_) => login(),
                 controller: _passwordController,
                 decoration: InputDecoration(
                   labelText: 'Password',
@@ -137,13 +131,7 @@ class LoginFormState extends State<LoginForm> {
                     child: Container(
                       decoration: BoxDecoration(shape: BoxShape.circle),
                       child: TextButton(
-                        onPressed: () async {
-                          bool x = await BlocProvider.of<LoginCubit>(context).login();
-                          if (x)
-                            AppRouter.router.navigateTo(context, Routes.index);
-                          else
-                            AppRouter.router.navigateTo(context, Routes.login);
-                        },
+                        onPressed: () => login(),
                         child: Text(
                           'Login',
                           style: Theme.of(context).textTheme.subtitle1,
@@ -158,5 +146,16 @@ class LoginFormState extends State<LoginForm> {
         ),
       ),
     );
+  }
+
+  login() async {
+    BlocProvider.of<LoginCubit>(context).update(_usernameController.text, _passwordController.text);
+    bool _checkCredentials = await BlocProvider.of<LoginCubit>(context).login();
+    if (_checkCredentials) {
+      // Check token and updating user information
+      if (await BlocProvider.of<AuthCubit>(context).authenticate()) {
+        AppRouter.router.navigateTo(context, Routes.index, replace: true);
+      }
+    }
   }
 }

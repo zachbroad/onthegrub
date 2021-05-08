@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onthegrubv2/core/auth/registration/bloc/registration_cubit.dart';
-import 'package:onthegrubv2/core/auth/registration/screens/location.dart';
 import 'package:onthegrubv2/core/auth/registration/screens/password.dart';
 import 'package:onthegrubv2/core/auth/registration/screens/phone_number.dart';
 import 'package:onthegrubv2/core/auth/registration/screens/username.dart';
@@ -23,7 +22,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     UserRegistrationPassword(nextPage, previousPage),
     UserRegistrationName(nextPage, previousPage),
     UserRegistrationPhoneNumber(nextPage, previousPage),
-    UserRegistrationLocation(nextPage, previousPage),
   ];
 
   int currentPage;
@@ -44,8 +42,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<RegistrationCubit>(
       create: (_) => RegistrationCubit(),
+      lazy: false,
       child: Scaffold(
         body: PageView(
           physics: NeverScrollableScrollPhysics(),

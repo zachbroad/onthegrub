@@ -19,10 +19,13 @@ class AuthCubit extends Cubit<AuthState> {
     if (_loggedIn) {
       User _user = await AuthRepository().retrieveUserProfile();
       emit(AuthState(_user, _loggedIn));
+      print("Authentication success");
       return true;
     } else {
       await SecureStorageService().logoutCurrentUser();
       emit(AuthState(User(), _loggedIn));
+
+      print("Authentication failed");
       return false;
     }
   }

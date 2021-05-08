@@ -9,7 +9,7 @@ class LoginRepository {
     _dio = Dio();
   }
 
-  Future<void> retrieveToken(String username, password) async {
+  Future<bool> retrieveToken(String username, password) async {
     try {
       final response = await _dio.post('${ApiPath.BASE_URL}/login-token/',
           data: {"username": "$username", "password": "$password"}, options: Options(headers: {'Accept': 'application/json'}));
@@ -17,9 +17,14 @@ class LoginRepository {
       if (response.statusCode == 200) {
         String _token = response.data['token'];
         await SecureStorageService().storeToken(_token);
+        return true;
+      }
+      if (response.statusCode == 400) {
+        return false;
       }
     } catch (er) {
       print(er);
     }
+    return false;
   }
 }

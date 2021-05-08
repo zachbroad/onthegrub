@@ -10,8 +10,13 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   Future<bool> login() async {
-    await LoginRepository().retrieveToken(state.username, state.password);
-    emit(LoginState('', ''));
-    return true;
+    bool _tokenRetrieved = await LoginRepository().retrieveToken(state.username, state.password);
+    if (_tokenRetrieved) {
+      emit(LoginState('', ''));
+      print("Login successful.");
+    } else {
+      print("Login failed.");
+    }
+    return _tokenRetrieved;
   }
 }
