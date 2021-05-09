@@ -1,9 +1,6 @@
-import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onthegrubv2/blocs/location_cubit.dart';
-import 'package:onthegrubv2/config/routes/routes.dart';
-import 'package:onthegrubv2/core/auth/bloc/auth_cubit.dart';
 import 'package:onthegrubv2/modules/index/home/home.dart';
 import 'package:onthegrubv2/modules/index/truck_search/screens/truck_list.dart';
 import 'package:onthegrubv2/modules/index/user_profile/user_profile.dart';
@@ -31,15 +28,11 @@ class IndexScreenState extends State<IndexScreen> {
     if (widget.initialPage != null) {
       _selectedPage = widget.initialPage;
     }
-
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    if (BlocProvider.of<AuthCubit>(context).state.user.pk == null) {
-      FluroRouter.appRouter.navigateTo(context, Routes.login);
-    }
     BlocProvider.of<LocationCubit>(context).requestPermission();
     return Scaffold(
       body: IndexedStack(

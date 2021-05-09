@@ -31,7 +31,6 @@ class _TruckSearchScreenState extends State<TruckSearchScreen> {
     return BlocProvider(
       create: (context) => TrucksCubit(),
       child: Scaffold(
-        appBar: AppBar(title: Text("Truck Finder")),
         body: BlocBuilder<TrucksCubit, TrucksState>(
           builder: (context, state) {
             if (state is TrucksInitial) {

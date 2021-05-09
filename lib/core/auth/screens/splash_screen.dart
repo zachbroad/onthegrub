@@ -1,11 +1,10 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onthegrubv2/config/routes/router.dart';
 import 'package:onthegrubv2/config/routes/routes.dart';
 import 'package:onthegrubv2/constants/assets_path.dart';
 import 'package:onthegrubv2/core/auth/bloc/auth_cubit.dart';
-import 'dart:async';
-
 import 'package:onthegrubv2/utils/services/rest_api_service.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -17,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    startTimer();
+    navigate();
   }
 
   @override
@@ -34,39 +33,12 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
-  startTimer() async {
-    bool x = await BlocProvider.of<AuthCubit>(context).authenticate();
-    if (x)
-      AppRouter.router.navigateTo(context, Routes.index);
-    else
-      AppRouter.router.navigateTo(context, Routes.login);
+  navigate() async {
+    await BlocProvider.of<AuthCubit>(context).authenticate();
+    AppRouter.router.navigateTo(context, Routes.index);
   }
 
-  // navigateUser() async {
-  //   String token = await SecureStorageService().readToken();
-
-  //   if (token == null)
-  //     Navigator.pushReplacementNamed(context, LoginScreen.routeName);
-  //   else {
-  //     // check if JWT is valid
-  //     bool authenticated = await AuthService.verifyToken(token);
-  //     if (authenticated) {
-  //       User user = await AuthService.getUserProfile(token, context);
-  //       // TODO: device registration (needed for Firebase Notifications)
-  //       // Verify if there is a duplciate device token
-  //       //    if there is, ignore posting device
-  //       // if (!await verifyDuplicateToken(_deviceToken)) {
-  //       //   await APIService.postDevice(_deviceToken, user.pk);
-  //       // }
-
-  //       Navigator.pushNamed(context, IndexScreen.routeName);
-  //     } else {
-  //       await Auth.logout();
-  //       Navigator.pushReplacementNamed(context, LoginScreen.routeName);
-  //     }
-  //   }
-  // }
-
+  // Used for devices and notifications
   Future<bool> verifyDuplicateToken(currentId) async {
     Map<String, dynamic> notification = await APIService.getDevice();
     List<dynamic> devices = notification['results'];

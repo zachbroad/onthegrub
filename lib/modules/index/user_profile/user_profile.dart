@@ -1,3 +1,4 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onthegrubv2/config/routes/router.dart';
@@ -21,6 +22,30 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   @override
   Widget build(BuildContext context) {
     _user = BlocProvider.of<AuthCubit>(context).state.user;
+
+    if (_user.pk == null) {
+      return _anonymousUserView(context);
+    } else
+      return _userView(context);
+  }
+
+  Widget _anonymousUserView(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text("To access this page, create an account using the button below!"),
+          ElevatedButton(
+            onPressed: () => FluroRouter.appRouter.navigateTo(context, Routes.login),
+            child: Text("Register"),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _userView(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: Text(_user.username),
@@ -29,7 +54,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             icon: Icon(Icons.settings),
             onPressed: () async {
               bool boo = await BlocProvider.of<AuthCubit>(context).logout();
-              if (boo) AppRouter.router.navigateTo(context, Routes.login, replace: true);
+              if (boo) AppRouter.router.navigateTo(context, Routes.index, replace: true);
             },
           ),
         ],
