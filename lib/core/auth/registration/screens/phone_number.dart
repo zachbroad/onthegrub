@@ -125,25 +125,6 @@ class _UserRegistrationPhoneNumberState extends State<UserRegistrationPhoneNumbe
                 onPressed: () async {
                   bool x = await _registrationCubit.register();
                   AppRouter.router.navigateTo(context, Routes.login);
-                  // print(response.statusCode);
-                  // if (response.statusCode == 201 || response.statusCode == 200) {
-                  //   // If the user signed up for the mailing list and their email is valid
-                  //   // TODO: mailing list
-                  //   // user.mailingList ?? await APIService.signUpMailingList(user.email);
-                  //   Navigator.pop(context, true);
-                  // } else if (response.statusCode == 400) {
-                  //   // Check for errors thrown by db
-                  //   Map<String, dynamic> data = json.decode(response.body);
-                  //   data.forEach((key, value) {
-                  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  //       content: Text('$key: ${value[0]}'),
-                  //     ));
-                  //   });
-                  // } else {
-                  //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  //     content: Text(response.statusCode.toString()),
-                  //   ));
-                  // }
                 },
               ),
             ),

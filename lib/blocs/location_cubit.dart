@@ -8,6 +8,7 @@ part 'location_state.dart';
 
 class LocationCubit extends Cubit<LocationState> {
   final Location location = Location();
+
   String _address;
   LatLng userLocation;
   LatLng lastKnownUserLocation;
@@ -17,9 +18,7 @@ class LocationCubit extends Cubit<LocationState> {
   StreamSubscription<LocationData> _locationSubscription;
 
   LocationData get locationData => _location;
-
   bool get isListening => _isListening;
-
   String get address => _address;
 
   LocationCubit() : super(LocationInitial()) {

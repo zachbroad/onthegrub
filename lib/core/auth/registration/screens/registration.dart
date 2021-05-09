@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onthegrubv2/core/auth/registration/bloc/registration_cubit.dart';
 import 'package:onthegrubv2/core/auth/registration/screens/password.dart';
-import 'package:onthegrubv2/core/auth/registration/screens/phone_number.dart';
 import 'package:onthegrubv2/core/auth/registration/screens/username.dart';
-
-import 'email.dart';
-import 'name.dart';
+import 'package:onthegrubv2/core/auth/registration/screens/email.dart';
 
 class RegistrationScreen extends StatefulWidget {
   @override
@@ -20,8 +17,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     UserRegistrationUsername(nextPage, previousPage),
     UserRegistrationEmail(nextPage, previousPage),
     UserRegistrationPassword(nextPage, previousPage),
-    UserRegistrationName(nextPage, previousPage),
-    UserRegistrationPhoneNumber(nextPage, previousPage),
   ];
 
   int currentPage;
