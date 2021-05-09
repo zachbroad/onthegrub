@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   navigate() async {
     await BlocProvider.of<AuthCubit>(context).authenticate();
-    AppRouter.router.navigateTo(context, Routes.index);
+    AppRouter.router.navigateTo(context, Routes.index, replace: true);
   }
 
   // Used for devices and notifications
