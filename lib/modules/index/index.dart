@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onthegrubv2/blocs/location_cubit.dart';
 import 'package:onthegrubv2/modules/index/home/home.dart';
-import 'package:onthegrubv2/modules/index/truck_search/screens/truck_list.dart';
+import 'package:onthegrubv2/modules/index/truck_search/screens/truck_search.dart';
 import 'package:onthegrubv2/modules/index/user_profile/user_profile.dart';
 
 class IndexScreen extends StatefulWidget {

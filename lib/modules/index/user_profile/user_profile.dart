@@ -1,10 +1,10 @@
-import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onthegrubv2/config/routes/router.dart';
 import 'package:onthegrubv2/config/routes/routes.dart';
 import 'package:onthegrubv2/core/auth/bloc/auth_cubit.dart';
 import 'package:onthegrubv2/core/auth/models/user.dart';
+import 'package:onthegrubv2/modules/index/widgets/user_card.dart';
 
 class UserProfileScreen extends StatefulWidget {
   @override
@@ -22,7 +22,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   @override
   Widget build(BuildContext context) {
     _user = BlocProvider.of<AuthCubit>(context).state.user;
-
     if (_user.pk == null) {
       return _anonymousUserView(context);
     } else
@@ -30,15 +29,24 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   }
 
   Widget _anonymousUserView(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    return Container(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text("To access this page, create an account using the button below!"),
           ElevatedButton(
-            onPressed: () => FluroRouter.appRouter.navigateTo(context, Routes.login),
             child: Text("Register"),
+            onPressed: () {
+              AppRouter.router.navigateTo(context, Routes.registration);
+            },
+          ),
+          Text("Or"),
+          ElevatedButton(
+            child: Text("Login"),
+            onPressed: () {
+              AppRouter.router.navigateTo(context, Routes.login, replace: true);
+            },
           ),
         ],
       ),
@@ -59,6 +67,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
           ),
         ],
       ),
+      body: UserCard(_user),
     );
   }
 }

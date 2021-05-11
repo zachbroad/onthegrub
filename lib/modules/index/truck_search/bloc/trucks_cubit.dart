@@ -10,6 +10,7 @@ class TrucksCubit extends Cubit<TrucksState> {
   Future<void> getTrucks() async {
     emit(TrucksLoading());
 
+    // TODO: APIService to repo
     var response = await APIService.fetchTrucksList();
     var results = response["results"];
 
@@ -29,5 +30,9 @@ class TrucksCubit extends Cubit<TrucksState> {
 //      emit(TrucksFetchError("Unable to fetch trucks"));
 //      throw Exception("Unable to fetch trucks");
 //    }
+  }
+
+  Future<void> queryTrucks(String query) async {
+    emit(TrucksLoading());
   }
 }

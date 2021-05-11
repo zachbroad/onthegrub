@@ -6,23 +6,6 @@ import 'package:onthegrubv2/core/auth/registration/screens/registration.dart';
 import 'package:onthegrubv2/core/auth/screens/splash_screen.dart';
 import 'package:onthegrubv2/modules/index/index.dart';
 
-// Core handlers
-var loginHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-  return LoginScreen();
-});
-
-var registrationHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-  return RegistrationScreen();
-});
-
-var forgotPasswordHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-  return ForgotPasswordScreen();
-});
-
-var splashScreenHandler = Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-  return SplashScreen();
-});
-
 // Module handlers
 // Index handlers
 var indexHandler = Handler(
@@ -41,7 +24,25 @@ var indexHandler = Handler(
           initialPage: 2,
         );
       default:
-        return IndexScreen();
+        return IndexScreen(
+          initialPage: 0,
+        );
     }
   },
 );
+// Core handlers
+var splashScreenHandler = Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+  return SplashScreen();
+});
+
+var loginHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+  return LoginScreen();
+});
+
+var registrationHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+  return RegistrationScreen();
+});
+
+var forgotPasswordHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+  return ForgotPasswordScreen();
+});

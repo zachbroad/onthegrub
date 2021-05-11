@@ -4,6 +4,7 @@ import 'package:onthegrubv2/core/auth/registration/widgets/last_page_button.dart
 import 'package:onthegrubv2/core/auth/registration/widgets/next_page_button.dart';
 import 'package:onthegrubv2/core/auth/registration/widgets/text_field_next_button.dart';
 import 'package:onthegrubv2/modules/widgets/custom_form_field.dart';
+import 'package:onthegrubv2/modules/widgets/mailing_list.dart';
 import 'package:onthegrubv2/utils/mixins/validations_mixin.dart';
 import 'package:flutter/material.dart';
 
@@ -96,7 +97,7 @@ class _UserRegistrationEmailState extends State<UserRegistrationEmail> {
                             onPressed: _validateAndNextPage,
                           ),
                         ]),
-                        // MailingListCheckbox(value: user.mailingList, onChanged: _updateMailingList),
+                        MailingListCheckbox(value: _registrationCubit.state.userRegistration.mailingList, onChanged: _updateMailingList),
                       ],
                     ),
                   ),

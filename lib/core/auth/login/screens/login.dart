@@ -55,6 +55,13 @@ class LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       SizedBox(height: 16),
+                      Center(
+                        child: GestureDetector(
+                          child: Text('Use the app anonymously.'),
+                          onTap: () => AppRouter.router.navigateTo(context, Routes.index),
+                        ),
+                      ),
+                      SizedBox(height: 16.0),
 //                        Padding(
 //                          padding: const EdgeInsets.all(16.0),
 //                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
