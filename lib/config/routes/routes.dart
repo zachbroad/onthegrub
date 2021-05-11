@@ -10,14 +10,17 @@ class Routes {
   static String index = "/";
 
   static void configureRoutes(FluroRouter router) {
-    router.notFoundHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      print("ROUTE WAS NOT FOUND !!!");
-      return SafeArea(child: Text("Route not found! [${router.toString()}]"));
-    });
+    router.notFoundHandler = Handler(
+        handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+          print("ROUTE WAS NOT FOUND !!!");
+          return SafeArea(
+              child: Container(child: Text("Route not found! [${router.toString()}]")));
+        });
     router.define(splashScreen, handler: splashScreenHandler);
     router.define(login, handler: loginHandler);
     router.define(registration, handler: registrationHandler);
     router.define(forgotPassword, handler: forgotPasswordHandler);
+    router.define('/trucks/:id', handler: truckDetailHandler);
     router.define(index + ":initialRoute", handler: indexHandler);
   }
 }

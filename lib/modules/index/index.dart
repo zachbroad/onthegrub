@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onthegrubv2/blocs/location_cubit.dart';
 import 'package:onthegrubv2/modules/index/home/home.dart';
-import 'package:onthegrubv2/modules/index/truck_search/screens/truck_search.dart';
+import 'package:onthegrubv2/modules/index/truck/screens/truck_search.dart';
 import 'package:onthegrubv2/modules/index/user_profile/user_profile.dart';
 
 class IndexScreen extends StatefulWidget {
@@ -15,8 +15,8 @@ class IndexScreen extends StatefulWidget {
 }
 
 class IndexScreenState extends State<IndexScreen> {
-  int _selectedPage = 0;
-  int initialPage;
+  int _selectedPage = 1;
+  int initialPage = 1;
   var _pageOptions = [
     HomeScreen(),
     TruckSearchScreen(),

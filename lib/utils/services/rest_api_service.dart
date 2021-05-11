@@ -6,7 +6,7 @@ import 'package:onthegrubv2/data/models/menu_item.dart';
 import 'package:onthegrubv2/data/models/tag.dart';
 import 'package:onthegrubv2/constants/api_path.dart';
 import 'package:dio/dio.dart';
-import 'package:onthegrubv2/modules/index/truck_search/models/truck.dart';
+import 'package:onthegrubv2/modules/index/truck/models/truck.dart';
 
 class APIService {
   /* HELPER START */
@@ -115,6 +115,10 @@ class APIService {
     return await _get('${ApiPath.BASE_API_URL}/trucks.json');
   }
 
+  static Future<Map<String, dynamic>> fetchTrucksSearch(query) async {
+    return await _get('${ApiPath.BASE_API_URL}/trucks/?search=${query}');
+  }
+
   static Future<List<dynamic>> fetchTrendingTrucks() async {
     return await _get('${ApiPath.BASE_API_URL}/trucks/trending/');
   }
@@ -135,20 +139,12 @@ class APIService {
     return await _get('${ApiPath.BASE_API_URL}/trucks/?geolocation=${lat.toString().trim()},${lng.toString().trim()}&distance=$distance');
   }
 
-  static Future<Map<String, dynamic>> fetchTruckDetail(pk) async {
+  static Future<Map<String, dynamic>> fetchTruckByID(pk) async {
     return await _get('${ApiPath.BASE_API_URL}/trucks/$pk');
   }
 
   static Future<Map<String, dynamic>> fetchTrucksByOwner(int pk) async {
     return await _get('${ApiPath.BASE_API_URL}/trucks/?owner=$pk');
-  }
-
-  static Future<Map<String, dynamic>> queryTrucksByTitleTagsStartsWith(String query) async {
-    return await _get('${ApiPath.BASE_API_URL}/trucks/?title__startswith=$query&tags__title__startswith=$query');
-  }
-
-  static Future<Map<String, dynamic>> queryTrucksByTitleStartsWith(String query) async {
-    return await _get('${ApiPath.BASE_API_URL}/trucks/?title__startwith=$query');
   }
 
   static Future<dynamic> patchLive(Truck truck, {String endTime}) async {

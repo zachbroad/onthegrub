@@ -5,6 +5,7 @@ import 'package:onthegrubv2/core/auth/login/screens/login.dart';
 import 'package:onthegrubv2/core/auth/registration/screens/registration.dart';
 import 'package:onthegrubv2/core/auth/screens/splash_screen.dart';
 import 'package:onthegrubv2/modules/index/index.dart';
+import 'package:onthegrubv2/modules/index/truck/screens/truck_detail.dart';
 
 // Module handlers
 // Index handlers
@@ -31,18 +32,37 @@ var indexHandler = Handler(
   },
 );
 // Core handlers
-var splashScreenHandler = Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+var splashScreenHandler = Handler(handlerFunc: (
+  BuildContext context,
+  Map<String, dynamic> params,
+) {
   return SplashScreen();
 });
 
-var loginHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+var loginHandler = Handler(handlerFunc: (
+  BuildContext context,
+  Map<String, List<String>> params,
+) {
   return LoginScreen();
 });
 
-var registrationHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+var registrationHandler = Handler(handlerFunc: (
+  BuildContext context,
+  Map<String, List<String>> params,
+) {
   return RegistrationScreen();
 });
 
-var forgotPasswordHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+var forgotPasswordHandler = Handler(handlerFunc: (
+  BuildContext context,
+  Map<String, List<String>> params,
+) {
   return ForgotPasswordScreen();
+});
+
+var truckDetailHandler = Handler(handlerFunc: (
+  BuildContext context,
+  Map<String, dynamic> params,
+) {
+  return TruckDetailScreen(truckId: int.parse(params['id'][0]));
 });
