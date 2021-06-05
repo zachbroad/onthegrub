@@ -28,7 +28,3 @@ The features that we will release with are as follows:
         - Image
         - Name
     - Location services
-    
-
-## Getting Started
-
