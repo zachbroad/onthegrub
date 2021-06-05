@@ -43,33 +43,67 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
   assets:
-    - img/food1.jpg
-    - img/food2.jpg
-    - img/food3.jpg
-    - img/food4.jpg
-    - img/food5.jpg
-    - img/food0.jpg
-    - img/user1.jpg
-    - img/user2.jpg
-    - img/user3.jpg
-    - img/user0.jpg
-    - img/visa.png
-    - img/paypal.png
-    - img/apple_pay.png
-    - img/brazil.png
-    - img/canada.png
-    - img/china.png
-    - img/france.png
-    - img/germany.png
-    - img/italy.png
-    - img/netherlands.png
-    - img/spain.png
-    - img/united-arab-emirates.png
-    - img/united-states-of-america.png
-    - img/marker.png
+    - images/1280px-Apple_Pay_logo.svg.png
+    - images/apple_pay.png
+    - images/bgmap.jpg
+    - images/brazil.png
+    - images/canada.png
+    - images/china.png
+    - images/closed_pin.png
+    - images/food-truck.png
+    - images/food0.jpg
+    - images/food1.jpg
+    - images/food2.jpg
+    - images/food3.jpg
+    - images/food4.jpg
+    - images/food5.jpg
+    - images/food6.jpg
+    - images/france.png
+    - images/frown.png
+    - images/germany.png
+    - images/grubtruck.png
+    - images/grubtruck.svg
+    - images/grubtrucks_transparent.png
+    - images/grubtrucks_transparent.psd
+    - images/heart_food.jpg
+    - images/img_01.png
+    - images/italy.png
+    - images/loader.gif
+    - images/logo_downsized.png
+    - images/logo.png
+    - images/marker.png
+    - images/netherlands.png
+    - images/open_ping.png
+    - images/open_ping.psd
+    - images/PayPal_logo_logotype_emblem.png
+    - images/paypal.png
+    - images/spain.png
+    - images/test.png
+    - images/truck_logo_placeholder.png
+    - images/united-arab-emirates.png
+    - images/united-states-of-america.png
+    - images/united-states-of-america.png
+    - images/Untitled-1.psd
+    - images/user0.jpg
+    - images/user1.jpg
+    - images/user2.jpg
+    - images/user3.jpg
+    - images/visa_PNG4.png
+    - images/visa.png
 
+
+
+
+    
+    
+
+
+
+
+
+
+    
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
