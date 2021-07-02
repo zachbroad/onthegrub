@@ -190,7 +190,7 @@ class TruckDetailFetchedScreen extends StatelessWidget {
                         children: <Widget>[
                           Expanded(
                             child: Text(
-                              truck.address,
+                              truck.address ?? "no address",
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
                               style: Theme
