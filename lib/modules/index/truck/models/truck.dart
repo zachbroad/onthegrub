@@ -13,6 +13,9 @@ part 'truck.g.dart';
 
 LatLng from(dynamic json) {
   var j = json.toString().split(',');
+  if (j.length != 2) { // TODO: this is a lil hacky, there's prob a better way to do this, but it should work 100% of the time
+    return null;
+  }
   return LatLng.fromJson([double.parse(j[0]), double.parse(j[1])]);
 }
 
@@ -97,7 +100,9 @@ class Truck extends ChangeNotifier {
 
   double distanceAway(LatLng fromLocation) {
     if (fromLocation != null && (latitude != null && longitude != null)) {
-      return SphericalUtils.computeDistanceBetween(Point(fromLocation.latitude, fromLocation.longitude), Point(latitude, longitude));
+      return SphericalUtils.computeDistanceBetween(
+          Point(fromLocation.latitude, fromLocation.longitude),
+          Point(latitude, longitude));
     } else {
       return null;
     }
