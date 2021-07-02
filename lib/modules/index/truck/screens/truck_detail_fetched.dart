@@ -31,15 +31,10 @@ class TruckDetailFetchedScreen extends StatelessWidget {
             shrinkWrap: false,
             slivers: <Widget>[
               SliverAppBar(
-                backgroundColor: Theme
-                    .of(context)
-                    .accentColor
-                    .withOpacity(0.9),
+                backgroundColor: Theme.of(context).accentColor.withOpacity(0.9),
                 expandedHeight: 300,
                 elevation: 0,
-                iconTheme: IconThemeData(color: Theme
-                    .of(context)
-                    .primaryColor),
+                iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
                 flexibleSpace: FlexibleSpaceBar(
                   collapseMode: CollapseMode.parallax,
                   background: Hero(
@@ -56,8 +51,7 @@ class TruckDetailFetchedScreen extends StatelessWidget {
 //              crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
@@ -66,44 +60,33 @@ class TruckDetailFetchedScreen extends StatelessWidget {
                               truck.title,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
-                              style: Theme
-                                  .of(context)
-                                  .textTheme
-                                  .display2,
+                              style: Theme.of(context).textTheme.display2,
                             ),
                           ),
                           SizedBox(
-                            width: 45,
+                            width: 75,
                             height: 45,
-                            child: FlatButton(
-                              padding: EdgeInsets.all(0),
-                              onPressed: () {},
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Text(truck.rating.toString(),
-                                      style: Theme
-                                          .of(context)
-                                          .textTheme
-                                          .body2
-                                          .merge(TextStyle(color: Theme
-                                          .of(context)
-                                          .primaryColor))),
-                                  Icon(
-                                    Icons.star_border,
-                                    color: Theme
-                                        .of(context)
-                                        .primaryColor,
-                                    size: 18,
-                                  ),
-                                ],
-                              ),
-                              color: Theme
-                                  .of(context)
-                                  .accentColor
-                                  .withOpacity(0.9),
-                              shape: StadiumBorder(),
-                            ),
+                            child: truck.rating != null
+                                ? FlatButton(
+                                    padding: EdgeInsets.all(0),
+                                    onPressed: () {},
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(truck.rating.toString(),
+                                            style:
+                                                Theme.of(context).textTheme.body2.merge(TextStyle(color: Theme.of(context).primaryColor))),
+                                        Icon(
+                                          Icons.star_border,
+                                          color: Theme.of(context).primaryColor,
+                                          size: 18,
+                                        ),
+                                      ],
+                                    ),
+                                    color: Theme.of(context).accentColor.withOpacity(0.9),
+                                    shape: StadiumBorder(),
+                                  )
+                                : Text("No ratings... be the first!"),
                           ),
                           // SizedBox(width: 10),
                           // SizedBox(
@@ -132,8 +115,7 @@ class TruckDetailFetchedScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 5),
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                       child: Text(truck.description),
                     ),
                     // ImageThumbCarouselWidget(),
@@ -179,12 +161,9 @@ class TruckDetailFetchedScreen extends StatelessWidget {
                     //   ),
                     // ),
                     Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                       margin: const EdgeInsets.symmetric(vertical: 5),
-                      color: Theme
-                          .of(context)
-                          .primaryColor,
+                      color: Theme.of(context).primaryColor,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -193,10 +172,7 @@ class TruckDetailFetchedScreen extends StatelessWidget {
                               truck.address,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
-                              style: Theme
-                                  .of(context)
-                                  .textTheme
-                                  .body2,
+                              style: Theme.of(context).textTheme.body2,
                             ),
                           ),
                           SizedBox(width: 10),
@@ -208,15 +184,10 @@ class TruckDetailFetchedScreen extends StatelessWidget {
                               onPressed: () {},
                               child: Icon(
                                 Icons.directions,
-                                color: Theme
-                                    .of(context)
-                                    .primaryColor,
+                                color: Theme.of(context).primaryColor,
                                 size: 24,
                               ),
-                              color: Theme
-                                  .of(context)
-                                  .accentColor
-                                  .withOpacity(0.9),
+                              color: Theme.of(context).accentColor.withOpacity(0.9),
                               shape: StadiumBorder(),
                             ),
                           ),
@@ -224,12 +195,9 @@ class TruckDetailFetchedScreen extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                       margin: const EdgeInsets.symmetric(vertical: 5),
-                      color: Theme
-                          .of(context)
-                          .primaryColor,
+                      color: Theme.of(context).primaryColor,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -237,10 +205,7 @@ class TruckDetailFetchedScreen extends StatelessWidget {
                             child: Text(
                               '${truck.phone}',
                               overflow: TextOverflow.ellipsis,
-                              style: Theme
-                                  .of(context)
-                                  .textTheme
-                                  .body2,
+                              style: Theme.of(context).textTheme.body2,
                             ),
                           ),
                           SizedBox(width: 10),
@@ -252,15 +217,10 @@ class TruckDetailFetchedScreen extends StatelessWidget {
                               onPressed: () {},
                               child: Icon(
                                 Icons.call,
-                                color: Theme
-                                    .of(context)
-                                    .primaryColor,
+                                color: Theme.of(context).primaryColor,
                                 size: 24,
                               ),
-                              color: Theme
-                                  .of(context)
-                                  .accentColor
-                                  .withOpacity(0.9),
+                              color: Theme.of(context).accentColor.withOpacity(0.9),
                               shape: StadiumBorder(),
                             ),
                           ),
