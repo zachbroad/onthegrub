@@ -29,6 +29,8 @@ class TruckListItem extends StatelessWidget {
 }
 
 class _TruckSearchScreenState extends State<TruckSearchScreen> {
+  final TextEditingController search = TextEditingController();
+
   Widget build(BuildContext context) {
     return BlocProvider<TrucksCubit>(
       create: (_) {
@@ -41,15 +43,13 @@ class _TruckSearchScreenState extends State<TruckSearchScreen> {
         body: SafeArea(
           child: SingleChildScrollView(
             physics: AlwaysScrollableScrollPhysics(
-              parent: BouncingScrollPhysics(),
+              parent: PageScrollPhysics(),
             ),
             padding: EdgeInsets.symmetric(vertical: 10),
-            child: BlocBuilder<TrucksCubit, TrucksState>(
-                builder: (
+            child: BlocBuilder<TrucksCubit, TrucksState>(builder: (
               context,
               state,
-            )
-                {
+            ) {
               if (state is TrucksFetched) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,47 +57,25 @@ class _TruckSearchScreenState extends State<TruckSearchScreen> {
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     Container(
-                      padding: const EdgeInsets.only(
-                          left: 20, right: 10, bottom: 10),
+                      padding: const EdgeInsets.only(left: 20, right: 10, bottom: 10),
                       child: Text(
                         "Find food trucks near you",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline1
-                            .copyWith(fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.headline1.copyWith(fontWeight: FontWeight.bold),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: TextField(
+                        controller: search,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(12),
                           hintText: 'Search',
-                          hintStyle: TextStyle(
-                              color: Theme.of(context)
-                                  .focusColor
-                                  .withOpacity(0.7)),
-                          prefixIcon: Icon(Icons.search,
-                              color: Theme.of(context).accentColor),
-                          suffixIcon: Icon(Icons.mic_none,
-                              color: Theme.of(context)
-                                  .focusColor
-                                  .withOpacity(0.7)),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context)
-                                      .focusColor
-                                      .withOpacity(0.2))),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context)
-                                      .focusColor
-                                      .withOpacity(0.5))),
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context)
-                                      .focusColor
-                                      .withOpacity(0.2))),
+                          hintStyle: TextStyle(color: Theme.of(context).focusColor.withOpacity(0.7)),
+                          prefixIcon: Icon(Icons.search, color: Theme.of(context).accentColor),
+                          suffixIcon: Icon(Icons.mic_none, color: Theme.of(context).focusColor.withOpacity(0.7)),
+                          border: OutlineInputBorder(borderSide: BorderSide(color: Theme.of(context).focusColor.withOpacity(0.2))),
+                          focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Theme.of(context).focusColor.withOpacity(0.5))),
+                          enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Theme.of(context).focusColor.withOpacity(0.2))),
                         ),
                       ),
                     ),
@@ -144,14 +122,12 @@ class _TruckSearchScreenState extends State<TruckSearchScreen> {
                     Text("Trucks Init"),
                     TextButton(
                       child: Text("Load"),
-                      onPressed: (() =>
-                          context.read<TrucksCubit>().getTrucks()),
+                      onPressed: (() => context.read<TrucksCubit>().getTrucks()),
                     )
                   ],
                 );
               if (state is TrucksLoading) return Text("Loading...");
-              if (state is TrucksFetchError)
-                return Text("Error:  + $state.error");
+              if (state is TrucksFetchError) return Text("Error:  + $state.error");
               return Text("??? - $state");
             }),
           ),

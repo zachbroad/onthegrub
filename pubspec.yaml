@@ -67,7 +67,47 @@ flutter:
     - assets/images/bgmap.jpg
     - assets/images/grubtruck.png
     - assets/images/food-truck.png
-  #   - images/a_dot_ham.jpeg
+    - assets/images/1280px-Apple_Pay_logo.svg.png
+    - assets/images/apple_pay.png
+    - assets/images/bgmap.jpg
+    - assets/images/brazil.jpg
+    - assets/images/canada.png
+    - assets/images/china.jpg
+    - assets/images/closed_pin.jpg
+    - assets/images/food-truck.png
+    - assets/images/food0.png
+    - assets/images/food1.png
+    - assets/images/food1.png
+    - assets/images/food1.png
+    - assets/images/food1.png
+    - assets/images/food1.png
+    - assets/images/france.jpg
+    - assets/images/frown.jpg
+    - assets/images/germany.jpg
+    - assets/images/grubtruck.png
+    - assets/images/grubtruck.svg
+    - assets/images/heart_food.jpg
+    - assets/images/img_01.png
+    - assets/images/italy.png
+    - assets/images/loader.gif
+    - assets/images/logo_downsized.png
+    - assets/images/logo.png
+    - assets/images/marker.png
+    - assets/images/netherlands.png
+    - assets/images/open_pin.jpg
+    - assets/images/PayPal_logo_logotype_emblem.png
+    - assets/images/paypal.png
+    - assets/images/spain.png
+    - assets/images/test.png
+    - assets/images/truck_logo_placeholder.png
+    - assets/images/united_arab_emirates.png
+    - assets/images/united_states_of_america.png
+    - assets/images/user0.jpg
+    - assets/images/user0.jpg
+    - assets/images/user0.jpg
+    - assets/images/user0.jpg
+    - assets/images/visa_PNG64.png
+    - assets/images/visa.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
