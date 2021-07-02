@@ -52,7 +52,9 @@ class _TruckSearchScreenState extends State<TruckSearchScreen> {
           ) {
             if (state is TrucksFetched) {
               var trucksFiltered = state.trucks.where((element) {
-                return element.title.toLowerCase().contains(_textEditingController.text.toLowerCase());
+                return element.title
+                    .toLowerCase()
+                    .contains(_textEditingController.text.toLowerCase());
               });
 
               return Column(
@@ -85,28 +87,47 @@ class _TruckSearchScreenState extends State<TruckSearchScreen> {
                         contentPadding: EdgeInsets.all(12),
                         hintText: 'Search',
                         hintStyle: TextStyle(
-                            color:
-                                Theme.of(context).focusColor.withOpacity(0.7)),
-                        prefixIcon: Icon(Icons.search,
-                            color: Theme.of(context).accentColor),
-                        suffixIcon: Icon(Icons.mic_none,
-                            color:
-                                Theme.of(context).focusColor.withOpacity(0.7)),
+                          color: Theme.of(context).focusColor.withOpacity(0.7),
+                        ),
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: Theme.of(context).accentColor,
+                        ),
+                        suffixIcon: this._textEditingController.text == ""
+                            ? Icon(
+                                Icons.mic_none,
+                                color: Theme.of(context)
+                                    .focusColor
+                                    .withOpacity(0.7),
+                              )
+                            : IconButton(
+                                icon: Icon(Icons.clear),
+                                onPressed: () {
+                                  _textEditingController.clear();
+                                  setState(() {});
+                                },
+                                color: Theme.of(context)
+                                    .focusColor
+                                    .withOpacity(0.7),
+                              ),
                         border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context)
-                                    .focusColor
-                                    .withOpacity(0.2))),
+                          borderSide: BorderSide(
+                            color:
+                                Theme.of(context).focusColor.withOpacity(0.2),
+                          ),
+                        ),
                         focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context)
-                                    .focusColor
-                                    .withOpacity(0.5))),
+                          borderSide: BorderSide(
+                            color:
+                                Theme.of(context).focusColor.withOpacity(0.5),
+                          ),
+                        ),
                         enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context)
-                                    .focusColor
-                                    .withOpacity(0.2))),
+                          borderSide: BorderSide(
+                            color:
+                                Theme.of(context).focusColor.withOpacity(0.2),
+                          ),
+                        ),
                       ),
                     ),
                   ),
