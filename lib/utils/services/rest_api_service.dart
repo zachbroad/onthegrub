@@ -112,7 +112,7 @@ class APIService {
   /* TRUCKS START */
 
   static Future<Map<String, dynamic>> fetchTrucksList() async {
-    return await _get('${ApiPath.BASE_API_URL}/trucks.json');
+    return await _get('${ApiPath.BASE_API_URL}/trucks?limit=1000');
   }
 
   static Future<Map<String, dynamic>> fetchTrucksSearch(query) async {

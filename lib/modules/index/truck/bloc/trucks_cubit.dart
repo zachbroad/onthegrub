@@ -33,20 +33,20 @@ class TrucksCubit extends Cubit<TrucksState> {
 //    }
   }
 
-  Future<void> queryTrucks(String query) async {
-    emit(TrucksLoading());
-
-    // TODO: Either handle pagination or make this return ALL the trucks when you're searching...
-    var response = await APIService.fetchTrucksSearch(query);
-    var results = response["results"];
-    var trucks = <Truck>[];
-
-    for (Map<String, dynamic> truck in results) {
-      Truck t = Truck.fromJson(truck);
-      trucks.add(t);
-    }
-    emit(TrucksFetched(trucks: trucks));
-  }
+  // Future<void> queryTrucks(String query) async {
+  //   emit(TrucksLoading());
+  //
+  //   // TODO: Either handle pagination or make this return ALL the trucks when you're searching...
+  //   var response = await APIService.fetchTrucksSearch(query);
+  //   var results = response["results"];
+  //   var trucks = <Truck>[];
+  //
+  //   for (Map<String, dynamic> truck in results) {
+  //     Truck t = Truck.fromJson(truck);
+  //     trucks.add(t);
+  //   }
+  //   emit(TrucksFetched(trucks: trucks));
+  // }
 }
 
 class TruckDetailCubit extends Cubit<TrucksState> {
