@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onthegrubv2/config/routes/router.dart';
+import 'package:onthegrubv2/constants/assets_path.dart';
 import 'package:onthegrubv2/modules/index/truck/models/truck.dart';
 
 class TruckListItemWidget extends StatelessWidget {
@@ -20,10 +20,7 @@ class TruckListItemWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: Theme.of(context).primaryColor.withOpacity(0.9),
           boxShadow: [
-            BoxShadow(
-                color: Theme.of(context).focusColor.withOpacity(0.1),
-                blurRadius: 5,
-                offset: Offset(0, 2)),
+            BoxShadow(color: Theme.of(context).focusColor.withOpacity(0.1), blurRadius: 5, offset: Offset(0, 2)),
           ],
         ),
         child: Row(
@@ -34,8 +31,9 @@ class TruckListItemWidget extends StatelessWidget {
               width: 60,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(5)),
-                image: DecorationImage(
-                    image: NetworkImage(truck.image), fit: BoxFit.cover),
+                image: truck.image != null
+                    ? DecorationImage(image: NetworkImage(truck.image), fit: BoxFit.cover)
+                    : DecorationImage(image: AssetImage(Assets.foodTruck)),
               ),
             ),
             SizedBox(width: 15),
@@ -51,7 +49,7 @@ class TruckListItemWidget extends StatelessWidget {
                           truck.title,
                           overflow: TextOverflow.ellipsis,
                           maxLines: 2,
-                          style: Theme.of(context).textTheme.subhead,
+                          style: Theme.of(context).textTheme.subtitle1,
                         ),
                         Text(
                           truck.address ?? "",

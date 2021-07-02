@@ -21,18 +21,8 @@ Truck _$TruckFromJson(Map<String, dynamic> json) {
     owner: json['owner'] as int,
     phone: json['phone'] as String,
     rating: (json['rating'] as num)?.toDouble(),
-    reviews: (json['reviews'] as List)
-        ?.map((e) =>
-            e == null ? null : Review.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    schedule: (json['schedule'] as List)
-        ?.map((e) => e == null
-            ? null
-            : TruckScheduleEvent.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    tags: (json['tags'] as List)
-        ?.map((e) => e == null ? null : Tag.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    schedule: (json['schedule'] as List)?.map((e) => e == null ? null : TruckScheduleEvent.fromJson(e as Map<String, dynamic>))?.toList(),
+    tags: (json['tags'] as List)?.map((e) => e == null ? null : Tag.fromJson(e as Map<String, dynamic>))?.toList(),
     title: json['title'] as String,
     visits: json['visits'] as int,
     website: json['website'] as String,
@@ -43,7 +33,6 @@ Map<String, dynamic> _$TruckToJson(Truck instance) => <String, dynamic>{
       'pk': instance.pk,
       'geolocation': jsonEncode(instance.geolocation),
       'tags': instance.tags,
-      'reviews': instance.reviews,
       'schedule': instance.schedule,
       'menu': instance.menu,
       'address': instance.address,

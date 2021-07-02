@@ -5,11 +5,9 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_utils/google_maps_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:onthegrubv2/data/models/menu.dart';
-import 'package:onthegrubv2/data/models/review.dart';
 import 'package:onthegrubv2/data/models/tag.dart';
 import 'package:onthegrubv2/data/models/truck_event.dart';
 import 'dart:core';
-
 
 part 'truck.g.dart';
 
@@ -25,7 +23,6 @@ class Truck extends ChangeNotifier {
   @JsonKey(fromJson: from, toJson: jsonEncode)
   LatLng geolocation;
   List<Tag> tags;
-  List<Review> reviews;
   List<TruckScheduleEvent> schedule;
   Menu menu;
   String address;
@@ -57,7 +54,6 @@ class Truck extends ChangeNotifier {
     this.owner,
     this.phone,
     this.rating,
-    this.reviews,
     this.schedule,
     this.tags,
     this.title,
